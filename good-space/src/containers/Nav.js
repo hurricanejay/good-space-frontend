@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 const Nav = () => {
@@ -8,21 +8,25 @@ const Nav = () => {
 
 
   return (
+
     <nav>
       <div className="nav">
       <h3>Good Space Logo</h3>
         <ul className="nav-links">
-          <Link style={navStyle}  to="/login">
+        <NavLink style={navStyle}  to="/home">
+            <li>Home</li>
+          </NavLink>
+          <NavLink style={navStyle}  to="/login">
             <li>Log In</li>
-          </Link>
-          <Link style={navStyle} to="/signup">
+          </NavLink>
+          <NavLink style={navStyle} to="/signup">
             <li>Sign Up</li>
-          </Link>
-          <Link style={navStyle} to="/allposts">
-            <li>Posts</li>
-          </Link>
+          </NavLink>
+          <NavLink style={navStyle} to="/allposts">
+            <li>All Posts</li>
+          </NavLink>
         </ul>
-        <button>Search</button>
+        {/* <button>Search</button> */}
       </div>
     </nav>
   );

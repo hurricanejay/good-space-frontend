@@ -1,30 +1,26 @@
 import React from "react";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "./components/Home";
+import Signup from './components/Signup';
+import Login from './components/Login';
 import AllPosts from './containers/AllPosts'
-import MainContainer from "./containers/MainContainer";
-import Nav from "./containers/Nav";
+import Nav from './containers/Nav'
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/main" exact component={MainContainer} />
-          <Route path="/nav" exact component ={Nav} />
-        </Switch>
 
+      <div className="App">
+        <Nav />
+        <Switch>
+          <Route path="/home" exact component={Home} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
+          <Route path="/allposts" exact component={AllPosts} />
+        </Switch>
       </div>
-    </Router>
+
   );
 }
 
