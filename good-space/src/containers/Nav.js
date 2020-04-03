@@ -10,12 +10,16 @@ const Nav = () => {
   return (
     <nav>
       <div className="nav">
+      <h3>Good Space Logo</h3>
         <ul className="nav-links">
           <Link style={navStyle}  to="/login">
-            <li >Log In</li>
+            <li>Log In</li>
           </Link>
           <Link style={navStyle} to="/signup">
             <li>Sign Up</li>
+          </Link>
+          <Link style={navStyle} to="/allposts">
+            <li>Posts</li>
           </Link>
         </ul>
         <button>Search</button>

@@ -1,22 +1,37 @@
 import React from "react";
-import Welcome from "../components/Welcome";
-
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Nav from "../containers/Nav";
+import AllPosts from '../containers/AllPosts';
+import MyPosts from '../containers/MyPosts';
+
+const postsAPI = "http://localhost:3000/posts";
 
 class MainContainer extends React.Component {
+
+    state = {
+        posts: []
+    }
+
+    componentDidMount() {
+        fetch(postsAPI)
+          .then(response => response.json())
+          .then(posts => this.setState({ posts }));
+      }
+
   render() {
+      console.log(this.state.posts, "do we have posts?")
     return (
-      <Router>
+    <div>
+    <Router>
+      <div className="App">
+        <Nav />
         <Switch>
-          {/* <Route path='/signup' render={() => <SignUp setUser={this.setUser} />} />
-          <Route path='/login' render={() => <Login setUser={this.setUser} userCart={this.fillCart} />} />
-          <Route path='/post-form' render={(routerProps) => <Store currentUser={this.state.currentUser} {...routerProps} stores={this.state.stores} />} />
-          <Route path='/my-posts' render={() => <Store currentUser={this.state.currentUser} />} />
-          <Route path='/all-posts' render={(routerProps) => <MallContainer currentUser={this.state.currentUser} {...routerProps} stores={this.state.stores} />} /> */}
-          <Route path="/" component={Welcome} />
+        <Route path="/allposts" component={AllPosts}/>
+        <Route path="/myposts" component={MyPosts} />
         </Switch>
-      </Router>
-    );
+      </div>
+    </Router>
+    </div>);
   }
 }
 
