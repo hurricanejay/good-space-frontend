@@ -1,12 +1,7 @@
 import React from "react";
 
 const Login = () => {
-  return(
-    <div>
-    <button>DIS IS LOGIN</button>
-</div>
-
-  );
+  return <div>DIS IS LOGIN FORM</div>;
 };
 
 export default Login;

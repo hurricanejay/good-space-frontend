@@ -3,7 +3,7 @@ import React from "react";
 const Signup = () => {
   return (
   <div>
-      <button>DIS IS SIGN UP</button>
+      DIS IS SIGN UP FORM
   </div>);
 };
 
