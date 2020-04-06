@@ -24,7 +24,7 @@ class AllPosts extends React.Component {
         <h3>Latest Posts</h3>
         <br />
         {this.state.posts.map(post => (
-          <PostCard post={post} key={post.id} />
+          <PostCard {...post} key={post.id} />
         ))}
       </div>
     );
