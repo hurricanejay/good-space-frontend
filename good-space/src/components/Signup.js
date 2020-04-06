@@ -6,6 +6,7 @@ const Signup = () => {
         <div>
             <form>
               <div>
+              <h4>Sign Up</h4>
                 <input type="text" name="username" placeholder="Username" />
                 <label htmlFor="username">Username</label>
               </div>

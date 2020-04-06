@@ -1,5 +1,5 @@
 import React from "react";
-import Post from "../components/Post";
+import PostCard from "../components/PostCard";
 const postsAPI = "http://localhost:3000/posts";
 class AllPosts extends React.Component {
   state = {
@@ -20,7 +20,7 @@ class AllPosts extends React.Component {
     
       <div>
         {this.state.posts.map(post => (
-          <Post post={post} key={post.id} />
+          <PostCard post={post} key={post.id} />
         ))}
       </div>
     );
