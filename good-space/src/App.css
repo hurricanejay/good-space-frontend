@@ -24,6 +24,10 @@
 .my-posts {
   text-align: center;
 }
+
+.all-posts {
+  text-align: center;
+}
 /* .home {
   display: flex;
   justify-content: center;

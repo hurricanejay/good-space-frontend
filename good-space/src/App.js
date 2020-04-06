@@ -8,6 +8,7 @@ import Login from './components/Login';
 import AllPosts from './containers/AllPosts';
 import Nav from './containers/Nav';
 import MyPosts from './containers/MyPosts';
+// import MainContainer from './containers/MainContainer'
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           <Route path="/signup" exact component={Signup} />
           <Route path="/allposts" exact component={AllPosts} />
           <Route path="/myposts" exact component={MyPosts} />
+          {/* <Route path="/main" exact component={MainContainer} /> */}
         </Switch>
+
       </div>
 
   );

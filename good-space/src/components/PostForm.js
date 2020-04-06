@@ -1,20 +1,29 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import DatePicker from "react-datepicker";
 
+import "react-datepicker/dist/react-datepicker.css";
 
 class PostForm extends React.Component {
   state = {
     title: "",
-    date: "",
     location: "",
     description: "",
     tag: "",
-    category: ""
+    category: "",
+    startDate: new Date(),
+    user_id: 19
   };
 
   onChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+  };
+
+  handleChange = date => {
+    this.setState({
+      startDate: date
+    });
   };
 
   onSubmit = event => {
@@ -31,13 +40,12 @@ class PostForm extends React.Component {
     });
   };
 
-
   render() {
     //   console.log(this.props.addNewPost, 'add new post func?')
     return (
       <div>
         <form className="post-form" onSubmit={this.onSubmit}>
-            <label for="title">Title</label>
+          <label for="title">Title</label>
           <input
             type="text"
             name="title"
@@ -47,12 +55,19 @@ class PostForm extends React.Component {
           />
           <br />
           <label for="date">Date</label>
-          <input
+          {/* <input
             type="text"
             name="date"
             value={this.state.date}
             class="form-control"
             onChange={this.onChange}
+          /> */}
+          <br />
+          <DatePicker
+            selected={this.state.startDate}
+            onChange={this.handleChange}
+            class="form-control"
+            name="date"
           />
           <br />
           <label for="location">Zip Code</label>
@@ -95,7 +110,6 @@ class PostForm extends React.Component {
         </form>
         <br />
         <br />
-
       </div>
     );
   }
