@@ -16,6 +16,14 @@
   list-style: none;
 }
 
+.post-form {
+  width: 500px;
+  margin: auto;
+}
+
+.my-posts {
+  text-align: center;
+}
 /* .home {
   display: flex;
   justify-content: center;

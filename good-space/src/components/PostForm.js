@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from "react-bootstrap";
+
 
 class PostForm extends React.Component {
   state = {
@@ -10,56 +12,91 @@ class PostForm extends React.Component {
     category: ""
   };
 
-  onChange = (event) => {
-    const {name, value} = event.target
-    this.setState({[name]: value})
-}
+  onChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
-onSubmit = (event) => {
-    event.preventDefault()
-}
+  onSubmit = event => {
+    event.preventDefault();
+    const newPost = this.state;
+    this.props.addNewPost(newPost);
+    this.setState({
+      title: "",
+      date: "",
+      location: "",
+      description: "",
+      tag: "",
+      category: ""
+    });
+  };
+
 
   render() {
+    //   console.log(this.props.addNewPost, 'add new post func?')
     return (
-      <form onChange={this.onChange}>
-        <input
-          type="text"
-          name="title"
-          value={this.state.title}
-          placeholder="Title"
-        ></input>
-        <input
-          type="text"
-          name="date"
-          value={this.state.date}
-          placeholder="Date"
-        ></input>
-        <input
-          type="text"
-          name="location"
-          value={this.state.location}
-          placeholder="Zip Code"
-        ></input>
-        <input
-          type="text"
-          name="category"
-          value={this.state.category}
-          placeholder="Category"
-        ></input>
-        <input
-          type="text"
-          name="tag"
-          value={this.state.tag}
-          placeholder="Tag"
-        ></input>
-        <input
-          typearea="text"
-          name="description"
-          value={this.state.description}
-          placeholder="Description"
-        ></input>
-        <button submit={this.onSubmit}>Submit</button>
-      </form>
+      <div>
+        <form className="post-form" onSubmit={this.onSubmit}>
+            <label for="title">Title</label>
+          <input
+            type="text"
+            name="title"
+            value={this.state.title}
+            class="form-control"
+            onChange={this.onChange}
+          />
+          <br />
+          <label for="date">Date</label>
+          <input
+            type="text"
+            name="date"
+            value={this.state.date}
+            class="form-control"
+            onChange={this.onChange}
+          />
+          <br />
+          <label for="location">Zip Code</label>
+          <input
+            type="text"
+            name="location"
+            value={this.state.location}
+            class="form-control"
+            onChange={this.onChange}
+          />
+          <br />
+          <label for="category">Category</label>
+          <input
+            type="text"
+            name="category"
+            value={this.state.category}
+            class="form-control"
+            onChange={this.onChange}
+          />
+          <br />
+          <label for="Tag">Tag</label>
+          <input
+            type="text"
+            name="tag"
+            class="form-control"
+            value={this.state.tag}
+            onChange={this.onChange}
+          />
+          <br />
+          <label for="description">Description</label>
+          <textarea
+            name="description"
+            value={this.state.description}
+            class="form-control"
+            rows={7}
+            onChange={this.onChange}
+          />
+          <br />
+          <Button type="submit">Submit</Button>
+        </form>
+        <br />
+        <br />
+
+      </div>
     );
   }
 }

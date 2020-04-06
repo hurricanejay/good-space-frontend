@@ -11,7 +11,7 @@ const Nav = () => {
 
     <nav>
       <div className="nav">
-      <h3>Good Space Logo</h3>
+      <h3>The Good Space</h3>
         <ul className="nav-links">
         <NavLink style={navStyle}  to="/home">
             <li>Home</li>
@@ -25,8 +25,10 @@ const Nav = () => {
           <NavLink style={navStyle} to="/allposts">
             <li>All Posts</li>
           </NavLink>
+          <NavLink style={navStyle} to="/myposts">
+            <li>My Posts</li>
+          </NavLink>
         </ul>
-        {/* <button>Search</button> */}
       </div>
     </nav>
   );
