@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 
-const Nav = () => {
+const Nav = (props) => {
 
   const navStyle = {  color: "black"}
 
@@ -16,6 +16,8 @@ const Nav = () => {
         <NavLink style={navStyle}  to="/home">
             <li>Home</li>
           </NavLink>
+          {(props.currentUser) ? null : <NavLink  style={navStyle} to='/login'> Login </NavLink>}
+          {(props.currentUser) ? null : <NavLink  style={navStyle} to='/signup'> Signup </NavLink>}
           <NavLink style={navStyle}  to="/login">
             <li>Log In</li>
           </NavLink>

@@ -13,7 +13,7 @@ class PostForm extends React.Component {
     category: "",
     date: "",
     // startDate: new Date(),
-    user_id: 1
+    user_id: localStorage.user_id
   };
 
   onChange = event => {

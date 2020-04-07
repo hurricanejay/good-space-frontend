@@ -9,12 +9,15 @@ state = {
 }
 
   componentDidMount() {
-    //need to fetch user posts here
-    fetch("http://localhost:3000/posts/posts.user.id")
+        fetch(`http://localhost:3000/users/posts/${localStorage.user_id}`)
+    .then(response => response.json())
+    .then(posts => this.setState({posts: [posts]}))
+    .then(console.log(this.state.posts, 'posts?'));
+
   }
 
   addNewPost = newPost => {
-    console.log(newPost, 'newpost??')
+    // console.log(newPost, 'newpost??')
     fetch(postsAPI, {
       method: "POST",
       headers: {
@@ -29,6 +32,12 @@ state = {
       });
   };
 
+  renderPosts = () => {
+    {this.state.posts.map(post => (
+      post={post} 
+    ))}
+  }
+
 //   editPost = (id) => {
 //     fetch() ?
 // this.setState({})
@@ -40,13 +49,14 @@ state = {
 //   }
 
   render() {
-    console.log(this.addNewPost, 'adding post?')
+ 
+    // console.log(this.addNewPost, 'adding post?')
     return (
       <div className="my-posts">
         <h3>My Posts</h3>
         <br />
         <div>
-          <p>User's previous posts should go here, posts.user.id</p>
+          <p>{this.state.posts.posts}</p>
           <Button>Edit</Button>
           <Button>Delete</Button>
         </div>
