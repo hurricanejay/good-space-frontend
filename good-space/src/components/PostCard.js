@@ -8,7 +8,11 @@ class PostCard extends React.Component {
     likes: 0
   };
 
-  increaseLikesToDB = () => {
+  increaseLikes = () => {
+    this.setState(prevState => ({ likes: prevState.likes + 1 }));
+  };
+
+  addLikesToDB = (likes) => {
     fetch("http://localhost:3000/likes", {
       method: "POST",
       headers: {
@@ -23,9 +27,6 @@ class PostCard extends React.Component {
       });
   };
 
-  increaseLikes = () => {
-    this.setState(prevState => ({ likes: prevState.likes + 1 }));
-  };
 
   clickHandler = event => {
     event.persist();
@@ -36,18 +37,8 @@ class PostCard extends React.Component {
     });
   };
 
-  // componentDidMount() {
-  //   fetch(postsAPI/user.id)
-  //     .then(response => response.json())
-  //     .then(posts => this.setState({ posts }));
-  // }
-
-  //onclick need to get the id of the post and show that particular user's post
-  //onclick need to patch likes
-
   render() {
-    console.log(this.state.toggleDetails, "click or no click");
-
+console.log(this.state.likes, 'how many likes?')
     return (
       <div className="post-card">
         <h5>{this.props.title}</h5>
@@ -55,7 +46,7 @@ class PostCard extends React.Component {
         <h6>Location: {this.props.location}</h6>
         <Button
           onClick={this.increaseLikes}
-          increaseLikesToDB={this.increaseLikesToDB}
+          increaseLikesToDB={this.addLikesToDB}
         >
           Likes: {this.state.likes}{" "}
         </Button>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import {
-  BrowserRouter as
+  BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
@@ -91,11 +91,6 @@ class App extends Component {
       </div>
     );
   }
-}
-
-{
-  /* <Route exact path="/signup" render={() => (!props.currentUser) ? <Signup setUser={props.setUser} /> : null} />
-{props.currentUser ? <Link onClick={props.logout} >Logout</Link> : null} */
 }
 
 export default App;

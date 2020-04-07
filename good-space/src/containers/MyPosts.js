@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import PostForm from "../components/PostForm";
 import PostItem from "../components/PostItem";
-import PostCard from "../components/PostCard";
 
 const postsAPI = "http://localhost:3000/posts";
 
@@ -15,7 +14,6 @@ class MyPosts extends React.Component {
     fetch(`http://localhost:3000/users/posts/${localStorage.user_id}`)
       .then(response => response.json())
       .then(posts => this.setState({ posts: [posts] }));
-    // .then(console.log(this.state.posts, 'posts?'));
   }
 
   addNewPost = newPost => {
@@ -36,21 +34,42 @@ class MyPosts extends React.Component {
   renderPosts = () => {
     return (
       this.state.posts.length &&
-      this.state.posts[0].posts.map(post => <PostItem {...post} key={post.id}/>)
+      this.state.posts[0].posts.map(post => <div><PostItem {...post} test="x" key={post.id} />
+       {/* <Button>Edit</Button>
+          <Button>Delete</Button> */}
+        </div>)
     );
   };
 
-  //   editPost = (id) => {
-  //     fetch() ?
-  // this.setState({})
+  //   editPost = (event) => {
+  //     const {name, value} = event.target
+  // this.setState({[name]: value})
   //   }
 
-  //   deletePost = () => {
-  //     fetch()
-  //     this.setState({})
+  //   handleChange = () => {
+    // fetch(`http://localhost:3000/users/posts/${localStorage.user_id}`, {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     accept: "application/json"
+    //   },
+    //   body: JSON.stringify(---)
+    // })
+    //   .then(res => res.json())
+    //   .then(likes => {
+    //     this.setState({ ----- });
+    //   });
   //   }
+
+    // deletePost = (post) => {
+    //   fetch(`http://localhost:3000/users/posts/${localStorage.user_id}`, {
+    //     method: 'DELETE',
+    //   })
+    //   .then(res => res.json())
+    //   .then(res => console.log(res))}
 
   render() {
+    console.log(this.state.posts, 'posts?')
     return (
       <div className="my-posts">
         <h3>My Posts</h3>
@@ -58,8 +77,8 @@ class MyPosts extends React.Component {
         <div>
           <div>
           {this.renderPosts()}
-          <Button>Edit</Button>
-          <Button>Delete</Button>
+          {/* <Button>Edit</Button>
+          <Button onClick={this.deletePost}>Delete</Button> */}
           </div>
       
         </div>
