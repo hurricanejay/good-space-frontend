@@ -17,8 +17,7 @@ class PostCard extends React.Component {
   };
 
   clickHandler = event => {
-    // event.preventDefault()
-    event.persist();
+        event.persist();
     this.setState(prevState => {
       return {
         toggleDetails: !prevState.toggleDetails
@@ -27,8 +26,7 @@ class PostCard extends React.Component {
   };
 
   // componentDidMount() {
-  //   const userId =
-  //   fetch(postsAPI/userId)
+  //   fetch(postsAPI/user.id)
   //     .then(response => response.json())
   //     .then(posts => this.setState({ posts }));
   // }

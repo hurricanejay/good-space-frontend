@@ -1,6 +1,6 @@
 import React from "react";
 import PostCard from "../components/PostCard";
-import MyPosts from "../containers/MyPosts";
+// import MyPosts from "../containers/MyPosts";
 const postsAPI = "http://localhost:3000/posts";
 
 

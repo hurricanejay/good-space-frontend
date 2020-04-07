@@ -1,8 +1,8 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 
 class PostForm extends React.Component {
   state = {
@@ -11,8 +11,9 @@ class PostForm extends React.Component {
     description: "",
     tag: "",
     category: "",
-    startDate: new Date(),
-    user_id: 19
+    date: "",
+    // startDate: new Date(),
+    user_id: 1
   };
 
   onChange = event => {
@@ -42,6 +43,7 @@ class PostForm extends React.Component {
 
   render() {
     //   console.log(this.props.addNewPost, 'add new post func?')
+    console.log(this.state.description, 'desc??')
     return (
       <div>
         <form className="post-form" onSubmit={this.onSubmit}>
@@ -55,20 +57,20 @@ class PostForm extends React.Component {
           />
           <br />
           <label for="date">Date</label>
-          {/* <input
+          <input
             type="text"
             name="date"
             value={this.state.date}
             class="form-control"
             onChange={this.onChange}
-          /> */}
+          />
           <br />
-          <DatePicker
+          {/* <DatePicker
             selected={this.state.startDate}
             onChange={this.handleChange}
             class="form-control"
-            name="date"
-          />
+            name="start-date"
+          /> */}
           <br />
           <label for="location">Zip Code</label>
           <input
@@ -99,12 +101,14 @@ class PostForm extends React.Component {
           <br />
           <label for="description">Description</label>
           <textarea
+          type="text"
             name="description"
             value={this.state.description}
             class="form-control"
             rows={7}
             onChange={this.onChange}
           />
+          
           <br />
           <Button type="submit">Submit</Button>
         </form>

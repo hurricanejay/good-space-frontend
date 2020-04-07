@@ -7,7 +7,7 @@ const Home = () => {
     <div className="home">
       <h1>Welcome To The Good Space</h1>
       <p>
-        A community platform to connect with others for help, especially during
+        A community platform that allows you to connect with others for help, especially during
         a time of emergency.
       </p>
       <Link to="/allposts" exact>

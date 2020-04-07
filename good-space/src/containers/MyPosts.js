@@ -10,7 +10,7 @@ state = {
 
   componentDidMount() {
     //need to fetch user posts here
-    fetch("http://localhost:3000/posts/props.post.user.id")
+    fetch("http://localhost:3000/posts/posts.user.id")
   }
 
   addNewPost = newPost => {

@@ -40,7 +40,7 @@ class App extends Component {
       },
       () => {
         localStorage.user_id = user.id;
-        // this.props.history.push("/");
+        this.props.history.push("/");
       }
     );
   };
@@ -52,7 +52,7 @@ class App extends Component {
       },
       () => {
         localStorage.removeItem("user_id");
-        // this.props.history.push("/");
+        this.props.history.push("/");
       }
     );
   };
