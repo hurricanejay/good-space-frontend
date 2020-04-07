@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
 const Nav = (props) => {
@@ -16,14 +17,15 @@ const Nav = (props) => {
         <NavLink style={navStyle}  to="/home">
             <li>Home</li>
           </NavLink>
-          {(props.currentUser) ? null : <NavLink  style={navStyle} to='/login'> Login </NavLink>}
-          {(props.currentUser) ? null : <NavLink  style={navStyle} to='/signup'> Signup </NavLink>}
+          {(props.currentUser) ? null :
           <NavLink style={navStyle}  to="/login">
             <li>Log In</li>
-          </NavLink>
+          </NavLink>}
+          {(props.currentUser) ? null : 
           <NavLink style={navStyle} to="/signup">
             <li>Sign Up</li>
-          </NavLink>
+          </NavLink>}
+          {props.currentUser ? <Link style={navStyle} onClick={props.logout} >Logout</Link> : null}
           <NavLink style={navStyle} to="/allposts">
             <li>All Posts</li>
           </NavLink>

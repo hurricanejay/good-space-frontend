@@ -34,7 +34,7 @@ state = {
 
   renderPosts = () => {
     {this.state.posts.map(post => (
-      post={post} 
+    {...post} 
     ))}
   }
 

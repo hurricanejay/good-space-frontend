@@ -6,7 +6,6 @@ class Login extends Component {
   state = {
     username: '',
     password: '',
-//save id in state, when you click the page with post, get id from state and fetch from backend  and render posts
 }
 
 handleChange = (e) => {
@@ -28,7 +27,6 @@ handleSubmit = (e) => {
       if (response.errors){
         alert(response.errors)
       } else {
-        console.log(response, 'response??')
         this.props.setUser(response)
         window.close()
       }
@@ -38,7 +36,7 @@ handleSubmit = (e) => {
   }
 
   render() {
-    console.log(this.state.username, 'username?')
+    // console.log(this.state.username, 'username?')
     // console.log(this.props.setUser, 'props?')
     return (
   

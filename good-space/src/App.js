@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as  Redirect, Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Redirect,
+  Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -10,7 +15,7 @@ import MyPosts from "./containers/MyPosts";
 
 class App extends Component {
   state = {
-    currentUser: null,
+    currentUser: null
   };
 
   componentDidMount() {
@@ -40,10 +45,8 @@ class App extends Component {
       () => {
         localStorage.user_id = user.id;
         this.props.history.push("/allposts");
-      //  return <Redirect to="/allposts" />
-//history in app then pass down to component , only 1 level deeper than index
       }
-    );   
+    );
   };
 
   logout = () => {
@@ -54,21 +57,15 @@ class App extends Component {
       () => {
         localStorage.removeItem("user_id");
         this.props.history.push("/home");
-   
       }
     );
   };
 
-  renderLogin = (renderprops) => {
-    return <Login setUser={this.setUser} />
-  }
-
-  addComment = (newComment) => {
-fetch()
-  }
+  renderLogin = renderprops => {
+    return <Login setUser={this.setUser} />;
+  };
 
   render() {
-    // console.log(this.setUser, 'set user??')
     return (
       <div className="App">
         <Nav
@@ -76,19 +73,30 @@ fetch()
           logout={this.logout}
           currentUser={this.state.currentUser}
         />
-    <Switch>
-      <Route path="/home" exact component={Home} />
-      <Route path="/login" exact component={() => <Login isAuthed={true} setUser={this.setUser}/>} />
-      <Route path="/signup" exact component={Signup} />
-      <Route path="/allposts" exact component={AllPosts} />
-      <Route path="/myposts" exact component={MyPosts} />
-    </Switch>
+        <Switch>
+          <Route path="/home" exact component={Home} />
+          <Route
+            path="/login"
+            exact
+            component={() => <Login isAuthed={true} setUser={this.setUser} />}
+          />
+          <Route
+            path="/signup"
+            exact
+            component={Signup}
+            setUser={this.setUser}
+          />
+          <Route path="/allposts" exact component={AllPosts} />
+          <Route path="/myposts" exact component={MyPosts} />
+        </Switch>
       </div>
     );
   }
 }
 
-{/* <Route exact path="/signup" render={() => (!props.currentUser) ? <Signup setUser={props.setUser} /> : null} />
-{props.currentUser ? <Link onClick={props.logout} >Logout</Link> : null} */}
+{
+  /* <Route exact path="/signup" render={() => (!props.currentUser) ? <Signup setUser={props.setUser} /> : null} />
+{props.currentUser ? <Link onClick={props.logout} >Logout</Link> : null} */
+}
 
 export default App;
