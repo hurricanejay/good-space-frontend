@@ -10,6 +10,7 @@ state = {
 
   componentDidMount() {
     //need to fetch user posts here
+    fetch("http://localhost:3000/posts/props.post.user.id")
   }
 
   addNewPost = newPost => {
@@ -28,6 +29,15 @@ state = {
       });
   };
 
+//   editPost = (id) => {
+//     fetch() ?
+// this.setState({})
+//   }
+
+//   deletePost = () => {
+//     fetch()
+//     this.setState({})
+//   }
 
   render() {
     console.log(this.addNewPost, 'adding post?')
