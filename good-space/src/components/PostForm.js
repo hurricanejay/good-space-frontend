@@ -43,68 +43,68 @@ class PostForm extends React.Component {
 
   render() {
     //   console.log(this.props.addNewPost, 'add new post func?')
-    console.log(this.state.description, 'desc??')
+    // console.log(this.state.description, 'desc??')
     return (
       <div>
         <form className="post-form" onSubmit={this.onSubmit}>
-          <label for="title">Title</label>
+          <label htmlFor="title">Title</label>
           <input
             type="text"
             name="title"
             value={this.state.title}
-            class="form-control"
+            className="form-control"
             onChange={this.onChange}
           />
           <br />
-          <label for="date">Date</label>
+          <label htmlFor="date">Date</label>
           <input
             type="text"
             name="date"
             value={this.state.date}
-            class="form-control"
+            className="form-control"
             onChange={this.onChange}
           />
           <br />
           {/* <DatePicker
             selected={this.state.startDate}
             onChange={this.handleChange}
-            class="form-control"
+            className="form-control"
             name="start-date"
           /> */}
           <br />
-          <label for="location">Zip Code</label>
+          <label htmlFor="location">Zip Code</label>
           <input
             type="text"
             name="location"
             value={this.state.location}
-            class="form-control"
+            className="form-control"
             onChange={this.onChange}
           />
           <br />
-          <label for="category">Category</label>
+          <label htmlFor="category">Category</label>
           <input
             type="text"
             name="category"
             value={this.state.category}
-            class="form-control"
+            className="form-control"
             onChange={this.onChange}
           />
           <br />
-          <label for="Tag">Tag</label>
+          <label htmlFor="Tag">Tag</label>
           <input
             type="text"
             name="tag"
-            class="form-control"
+            className="form-control"
             value={this.state.tag}
             onChange={this.onChange}
           />
           <br />
-          <label for="description">Description</label>
+          <label htmlFor="description">Description</label>
           <textarea
           type="text"
             name="description"
             value={this.state.description}
-            class="form-control"
+            className="form-control"
             rows={7}
             onChange={this.onChange}
           />

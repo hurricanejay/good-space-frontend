@@ -10,6 +10,7 @@ const PostItem = props => {
       <h5>Location: {props.location}</h5>
       <h6>Date: {new Date(props.date).toLocaleDateString()}</h6>
       <p>{props.description}</p><br/>
+      
       {/* <p>Leave A Comment</p><textarea type="text"/><br/><br/> */}
       {/* <Button>Submit</Button><br/><br/> */}
     </div>

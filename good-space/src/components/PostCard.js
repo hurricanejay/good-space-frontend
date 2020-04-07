@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import PostItem from './PostItem'
+import PostItem from "./PostItem";
 
 class PostCard extends React.Component {
   state = {
@@ -8,16 +8,27 @@ class PostCard extends React.Component {
     likes: 0
   };
 
+  increaseLikesToDB = () => {
+    fetch("http://localhost:3000/likes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json"
+      },
+      body: JSON.stringify(this.state)
+    })
+      .then(res => res.json())
+      .then(likes => {
+        this.setState({ likes: [likes, ...this.state.likes] });
+      });
+  };
+
   increaseLikes = () => {
-    this.setState(prevState => {
-      return {
-        likes: prevState.likes + 1
-      };
-    });
+    this.setState(prevState => ({ likes: prevState.likes + 1 }));
   };
 
   clickHandler = event => {
-        event.persist();
+    event.persist();
     this.setState(prevState => {
       return {
         toggleDetails: !prevState.toggleDetails
@@ -32,9 +43,7 @@ class PostCard extends React.Component {
   // }
 
   //onclick need to get the id of the post and show that particular user's post
-  //onclick need to patch likes 
-
-
+  //onclick need to patch likes
 
   render() {
     console.log(this.state.toggleDetails, "click or no click");
@@ -44,10 +53,16 @@ class PostCard extends React.Component {
         <h5>{this.props.title}</h5>
         <h6>Category: {this.props.category}</h6>
         <h6>Location: {this.props.location}</h6>
-        <Button onClick={this.increaseLikes}>Likes: {this.state.likes} </Button>
-        {this.state.toggleDetails ? <PostItem {...this.props}/> : null }
-    <Button onClick={this.clickHandler}>{this.state.toggleDetails ? "Hide Details" : "Show Details"}</Button>
-        {/* <Button onClick={this.props.history.push(`http://localhost:3000/posts/{this.props.id}`)}>More info</Button> */}
+        <Button
+          onClick={this.increaseLikes}
+          increaseLikesToDB={this.increaseLikesToDB}
+        >
+          Likes: {this.state.likes}{" "}
+        </Button>
+        {this.state.toggleDetails ? <PostItem {...this.props} /> : null}
+        <Button onClick={this.clickHandler}>
+          {this.state.toggleDetails ? "Hide Details" : "Show Details"}
+        </Button>
         <hr />
         <br />
         <br />

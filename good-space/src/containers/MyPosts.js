@@ -1,23 +1,24 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import PostForm from "../components/PostForm";
+import PostItem from "../components/PostItem";
+import PostCard from "../components/PostCard";
+
 const postsAPI = "http://localhost:3000/posts";
 
 class MyPosts extends React.Component {
-state = {
-  posts: []
-}
+  state = {
+    posts: []
+  };
 
   componentDidMount() {
-        fetch(`http://localhost:3000/users/posts/${localStorage.user_id}`)
-    .then(response => response.json())
-    .then(posts => this.setState({posts: [posts]}))
-    .then(console.log(this.state.posts, 'posts?'));
-
+    fetch(`http://localhost:3000/users/posts/${localStorage.user_id}`)
+      .then(response => response.json())
+      .then(posts => this.setState({ posts: [posts] }));
+    // .then(console.log(this.state.posts, 'posts?'));
   }
 
   addNewPost = newPost => {
-    // console.log(newPost, 'newpost??')
     fetch(postsAPI, {
       method: "POST",
       headers: {
@@ -33,32 +34,34 @@ state = {
   };
 
   renderPosts = () => {
-    {this.state.posts.map(post => (
-    {...post} 
-    ))}
-  }
+    return (
+      this.state.posts.length &&
+      this.state.posts[0].posts.map(post => <PostItem {...post} key={post.id}/>)
+    );
+  };
 
-//   editPost = (id) => {
-//     fetch() ?
-// this.setState({})
-//   }
+  //   editPost = (id) => {
+  //     fetch() ?
+  // this.setState({})
+  //   }
 
-//   deletePost = () => {
-//     fetch()
-//     this.setState({})
-//   }
+  //   deletePost = () => {
+  //     fetch()
+  //     this.setState({})
+  //   }
 
   render() {
- 
-    // console.log(this.addNewPost, 'adding post?')
     return (
       <div className="my-posts">
         <h3>My Posts</h3>
         <br />
         <div>
-          <p>{this.state.posts.posts}</p>
+          <div>
+          {this.renderPosts()}
           <Button>Edit</Button>
           <Button>Delete</Button>
+          </div>
+      
         </div>
         <br />
         <h4>Create A New Post</h4>
