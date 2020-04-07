@@ -13,7 +13,7 @@ class MyPosts extends React.Component {
   componentDidMount() {
     fetch(`http://localhost:3000/users/posts/${localStorage.user_id}`)
       .then(response => response.json())
-      .then(posts => this.setState({ posts: [posts] }));
+      .then(user => this.setState({ posts: user.posts }));
   }
 
   addNewPost = newPost => {
@@ -27,60 +27,60 @@ class MyPosts extends React.Component {
     })
       .then(res => res.json())
       .then(posts => {
-        this.setState({ posts: [posts, ...this.state.posts] });
+        this.setState({ posts: [...this.state.posts, posts] });
       });
+  };
+
+  afterDelete = obj => {
+    const postsCopy = [...this.state.posts];
+    const newPosts = postsCopy.filter(p => p.id !== obj.id);
+    this.setState({ posts: newPosts });
   };
 
   renderPosts = () => {
     return (
       this.state.posts.length &&
-      this.state.posts[0].posts.map(post => <div><PostItem {...post} test="x" key={post.id} />
-       {/* <Button>Edit</Button>
-          <Button>Delete</Button> */}
-        </div>)
+      this.state.posts.map(post => (
+        <div>
+          <PostItem
+            {...post}
+            test="x"
+            key={post.id}
+            afterDelete={this.afterDelete}
+          />
+        </div>
+      ))
     );
   };
 
-  //   editPost = (event) => {
-  //     const {name, value} = event.target
-  // this.setState({[name]: value})
-  //   }
-
-  //   handleChange = () => {
-    // fetch(`http://localhost:3000/users/posts/${localStorage.user_id}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     accept: "application/json"
-    //   },
-    //   body: JSON.stringify(---)
-    // })
-    //   .then(res => res.json())
-    //   .then(likes => {
-    //     this.setState({ ----- });
-    //   });
-  //   }
-
-    // deletePost = (post) => {
-    //   fetch(`http://localhost:3000/users/posts/${localStorage.user_id}`, {
-    //     method: 'DELETE',
-    //   })
-    //   .then(res => res.json())
-    //   .then(res => console.log(res))}
+  // renderPosts = () => {
+  //   console.log('myposts', this.state.posts)
+  //   return (
+  //     this.state.posts.map(post => (
+  //       <div>
+  //         <PostItem
+  //           {...post}
+  //           test="x"
+  //           key={post.id}
+  //           afterDelete={this.afterDelete}
+  //         />
+  //       </div>
+  //     ))
+  //   );
+  // };
 
   render() {
-    console.log(this.state.posts, 'posts?')
+    console.log(this.state.posts, "posts?");
     return (
       <div className="my-posts">
         <h3>My Posts</h3>
         <br />
         <div>
           <div>
-          {this.renderPosts()}
-          {/* <Button>Edit</Button>
+            {this.renderPosts()}
+            {/* <Button>Edit</Button>
           <Button onClick={this.deletePost}>Delete</Button> */}
           </div>
-      
         </div>
         <br />
         <h4>Create A New Post</h4>

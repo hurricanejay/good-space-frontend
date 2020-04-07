@@ -40,6 +40,13 @@ const changeInput = (e) => {
       .then(console.log)
     }
 
+    const deletePost = () => {
+      fetch(`http://localhost:3000/posts/${props.id}`, {
+        method: 'DELETE',
+      })
+      props.afterDelete(props);
+    }
+
   return (
     <div className="post-item">
       <h3>{props.title}</h3>
@@ -50,7 +57,7 @@ const changeInput = (e) => {
       <p>{editing ? <input value={description} onChange={changeInput}></input> : props.description}</p><br/>
       {editing && <Button onClick={handleSubmit}>Save</Button>}
       {props.test && <Button onClick={editingHandler}>Edit</Button>}
-      {props.test && <Button>Delete</Button>}
+      {props.test && <Button onClick={deletePost}>Delete</Button>}
 
       {/* <p>Leave A Comment</p><textarea type="text"/><br/><br/> */}
       {/* <Button>Submit</Button><br/><br/> */}
