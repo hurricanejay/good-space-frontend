@@ -21,6 +21,14 @@
   margin: auto;
 }
 
+.login {
+  width: 500px;
+  margin: auto;
+}
+.signup {
+  width: 500px;
+  margin: auto;
+}
 .my-posts {
   text-align: center;
 }
@@ -30,6 +38,5 @@
 }
 /* .home {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 } */

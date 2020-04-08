@@ -41,7 +41,7 @@ handleSubmit = (e) => {
     // console.log(this.props.setUser, 'props?')
     return (
   
-      <div className="Login">
+      <div className="login">
       <h3>Login</h3>
       <form onSubmit={this.handleSubmit} id='form'>
           <FormGroup controlId="email" bssize="large">

@@ -32,14 +32,14 @@ class Signup extends React.Component {
           }
         });
     } else {
-      alert("Enter in your username and password correctly.");
+      alert("Please choose a username and password");
     }
 
     this.setState({ name: "", password: "" });
   };
   render() {
     return (
-      <div className="Login">
+      <div className="signup">
         <h3>Create An Account</h3>
         <form onSubmit={this.handleSubmit} id="form">
           <FormGroup controlId="email" bsSize="large">

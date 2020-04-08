@@ -36,7 +36,7 @@ const PostItem = props => {
       body: JSON.stringify(data)
     })
       .then(res => res.json())
-      .then(()=> {
+      .then(() => {
         setDescription(description);
         setEditing(false);
       });
@@ -58,7 +58,11 @@ const PostItem = props => {
       <h6>Date: {new Date(props.date).toLocaleDateString()}</h6>
       <p>
         {editing ? (
-          <input value={description} onChange={changeInput}></input>
+          <textarea
+            rows={5}
+            value={description}
+            onChange={changeInput}
+          ></textarea>
         ) : (
           description
         )}
