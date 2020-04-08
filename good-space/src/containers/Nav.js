@@ -29,9 +29,10 @@ const Nav = (props) => {
           <NavLink style={navStyle} to="/allposts">
             <li>All Posts</li>
           </NavLink>
+          {!props.currentUser ? null :
           <NavLink style={navStyle} to="/myposts">
             <li>My Posts</li>
-          </NavLink>
+          </NavLink>}
         </ul>
       </div>
     </nav>
