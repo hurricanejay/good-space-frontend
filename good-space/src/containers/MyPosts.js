@@ -7,7 +7,16 @@ const postsAPI = "http://localhost:3000/posts";
 
 class MyPosts extends React.Component {
   state = {
-    posts: []
+    posts: [],
+    toggleForm: false
+  };
+
+  showForm = () => {
+    this.setState(prevState => {
+      return {
+        toggleForm: !prevState.toggleForm
+      };
+    });
   };
 
   componentDidMount() {
@@ -53,22 +62,6 @@ class MyPosts extends React.Component {
     );
   };
 
-  // renderPosts = () => {
-  //   console.log('myposts', this.state.posts)
-  //   return (
-  //     this.state.posts.map(post => (
-  //       <div>
-  //         <PostItem
-  //           {...post}
-  //           test="x"
-  //           key={post.id}
-  //           afterDelete={this.afterDelete}
-  //         />
-  //       </div>
-  //     ))
-  //   );
-  // };
-
   render() {
     console.log(this.state.posts, "posts?");
     return (
@@ -83,8 +76,11 @@ class MyPosts extends React.Component {
           </div>
         </div>
         <br />
-        <h4>Create A New Post</h4>
-        <PostForm addNewPost={this.addNewPost} />
+
+        <Button onClick={this.showForm}>Create A New Post</Button>
+        {this.state.toggleForm ? (
+          <PostForm addNewPost={this.addNewPost} />
+        ) : null}
       </div>
     );
   }

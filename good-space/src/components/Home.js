@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Col, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const Home = () => {
   return (
@@ -16,12 +16,12 @@ const Home = () => {
       </div>
       <br />
       <Link to="/allposts" exact>
-        <Button>See All Posts</Button>
+        <Button >See All Posts</Button>
       </Link>
       <br />
       <br />
       <Link to="/login" exact>
-        <Button>Login</Button>
+        <Button >Login</Button>
       </Link>
       <Link to="/signup" exact>
         <Button>Signup</Button>

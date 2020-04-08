@@ -25,7 +25,9 @@ const Nav = (props) => {
           <NavLink style={navStyle} to="/signup">
             <li>Sign Up</li>
           </NavLink>}
-          {props.currentUser ? <Link style={navStyle} onClick={props.logout} >Logout</Link> : null}
+          {props.currentUser ? 
+          <Link style={navStyle} 
+          onClick={props.logout} >Logout</Link> : null}
           <NavLink style={navStyle} to="/allposts">
             <li>All Posts</li>
           </NavLink>

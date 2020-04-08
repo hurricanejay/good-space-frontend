@@ -3,7 +3,7 @@
   justify-content: space-round;
   align-items: center;
   min-height: 10vh;
-  background: yellow;
+  background: rgb(255, 255, 126);
   color: black;
 
 }
@@ -21,6 +21,21 @@
   margin: auto;
 }
 
+.post-item {
+  width: 500px;
+  margin: auto;
+  background: rgb(186, 226, 186);
+}
+
+.post-card {
+  /* display: flex; */
+  background: rgb(192, 234, 238);
+  width: 50%;
+  margin: auto;
+  /* justify-content: center; */
+  /* justify-self: center; */
+}
+
 .login {
   width: 500px;
   margin: auto;
@@ -36,7 +51,7 @@
 .all-posts {
   text-align: center;
 }
-/* .home {
-  display: flex;
-  text-align: center;
-} */
+.home {
+  width: 600px;
+  margin: auto;
+}

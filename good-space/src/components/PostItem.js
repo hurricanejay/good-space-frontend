@@ -51,10 +51,10 @@ const PostItem = props => {
 
   return (
     <div className="post-item">
-      <h3>{props.title}</h3>
-      <h4>Category: {props.category}</h4>
-      <h5>Tag: {props.tag}</h5>
-      <h5>Location: {props.location}</h5>
+      <h6>{props.title}</h6>
+      <h6>Category: {props.category}</h6>
+      <h6>Tag: {props.tag}</h6>
+      <h6>Location: {props.location}</h6>
       <h6>Date: {new Date(props.date).toLocaleDateString()}</h6>
       <p>
         {editing ? (
@@ -71,6 +71,7 @@ const PostItem = props => {
       {editing && <Button onClick={handleSubmit}>Save</Button>}
       {props.test && <Button onClick={editingHandler}>Edit</Button>}
       {props.test && <Button onClick={deletePost}>Delete</Button>}
+      <br/><br/>
 
       {/* <p>Leave A Comment</p><textarea type="text"/><br/><br/> */}
       {/* <Button>Submit</Button><br/><br/> */}
