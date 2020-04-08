@@ -2,32 +2,31 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 const PostItem = props => {
-  const [editing, setEditing] = useState(false)
-  const [description , setDescription] = useState(props.description)
+  const [editing, setEditing] = useState(false);
+  const [description, setDescription] = useState(props.description);
 
   const editingHandler = () => {
-    if(editing){
-      setEditing(false)
+    if (editing) {
+      setEditing(false);
     } else {
-      setEditing(true)
+      setEditing(true);
     }
-  }
+  };
 
-const changeInput = (e) => {
-  setDescription(e.target.value)
-}
+  const changeInput = e => {
+    setDescription(e.target.value);
+  };
 
-    const handleSubmit = () => {
+  const handleSubmit = () => {
+    let data = {
+      title: props.title,
+      category: props.category,
+      date: props.date,
+      location: props.location,
+      tag: props.tag,
+      description: description
+    };
 
-      let data = {
-        title: props.title,
-        category: props.category,
-        date: props.date,
-        location: props.location,
-        tag: props.tag,
-        description: description
-      }
-      
     fetch(`http://localhost:3000/posts/${props.id}`, {
       method: "PATCH",
       headers: {
@@ -37,15 +36,18 @@ const changeInput = (e) => {
       body: JSON.stringify(data)
     })
       .then(res => res.json())
-      .then(console.log)
-    }
+      .then(()=> {
+        setDescription(description);
+        setEditing(false);
+      });
+  };
 
-    const deletePost = () => {
-      fetch(`http://localhost:3000/posts/${props.id}`, {
-        method: 'DELETE',
-      })
-      props.afterDelete(props);
-    }
+  const deletePost = () => {
+    fetch(`http://localhost:3000/posts/${props.id}`, {
+      method: "DELETE"
+    });
+    props.afterDelete(props);
+  };
 
   return (
     <div className="post-item">
@@ -54,7 +56,14 @@ const changeInput = (e) => {
       <h5>Tag: {props.tag}</h5>
       <h5>Location: {props.location}</h5>
       <h6>Date: {new Date(props.date).toLocaleDateString()}</h6>
-      <p>{editing ? <input value={description} onChange={changeInput}></input> : props.description}</p><br/>
+      <p>
+        {editing ? (
+          <input value={description} onChange={changeInput}></input>
+        ) : (
+          description
+        )}
+      </p>
+      <br />
       {editing && <Button onClick={handleSubmit}>Save</Button>}
       {props.test && <Button onClick={editingHandler}>Edit</Button>}
       {props.test && <Button onClick={deletePost}>Delete</Button>}
