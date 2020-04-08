@@ -71,13 +71,11 @@ class MyPosts extends React.Component {
         <div>
           <div>
             {this.renderPosts()}
-            {/* <Button>Edit</Button>
-          <Button onClick={this.deletePost}>Delete</Button> */}
           </div>
         </div>
         <br />
 
-        <Button onClick={this.showForm}>Create A New Post</Button>
+        <Button onClick={this.showForm}>Create A New Post</Button><br/><br/>
         {this.state.toggleForm ? (
           <PostForm addNewPost={this.addNewPost} />
         ) : null}

@@ -71,7 +71,6 @@ const PostItem = props => {
       {editing && <Button onClick={handleSubmit}>Save</Button>}
       {props.test && <Button onClick={editingHandler}>Edit</Button>}
       {props.test && <Button onClick={deletePost}>Delete</Button>}
-      <br/><br/>
 
       {/* <p>Leave A Comment</p><textarea type="text"/><br/><br/> */}
       {/* <Button>Submit</Button><br/><br/> */}

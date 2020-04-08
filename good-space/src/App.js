@@ -14,7 +14,8 @@ import MyPosts from "./containers/MyPosts";
 
 class App extends Component {
   state = {
-    currentUser: null
+    currentUser: null,
+    showNav: true
   };
 
   componentDidMount() {
@@ -36,6 +37,13 @@ class App extends Component {
     }
   }
 
+  navDisplay = () => {
+    this.setState(prevState => {
+      return {
+        showNav: !prevState.showNav
+      }
+    })
+  }
   setUser = user => {
     this.setState(
       {
@@ -67,11 +75,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {/* {this.state.showNav ? null : */}
         <Nav
+        navDisplay={this.navDisplay}
           setUser={this.setUser}
           logout={this.logout}
           currentUser={this.state.currentUser}
-        />
+        /> 
+       {/* } */}
+   
         <Switch>
           <Route path="/home" exact component={Home} />
           <Route
@@ -82,8 +94,8 @@ class App extends Component {
           <Route
             path="/signup"
             exact
-            component={Signup}
-            setUser={this.setUser}
+            component={() =>
+            <Signup isAuthed={true} setUser={this.setUser}/> }
           />
           <Route path="/allposts" exact component={AllPosts} />
           <Route path="/myposts" exact component={MyPosts} />

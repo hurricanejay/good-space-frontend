@@ -15,17 +15,17 @@ const Home = () => {
         </p>
       </div>
       <br />
-      <Link to="/allposts" exact>
-        <Button >See All Posts</Button>
-      </Link>
-      <br />
-      <br />
       <Link to="/login" exact>
-        <Button >Login</Button>
+        <Button>Login</Button>
       </Link>
       <Link to="/signup" exact>
         <Button>Signup</Button>
       </Link>
+      <br /> <br />
+      <Link to="/allposts" exact>
+        <Button>See All Posts</Button>
+      </Link>
+      <br />
     </div>
   );
 };
