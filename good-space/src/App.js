@@ -11,6 +11,7 @@ import Login from "./components/Login";
 import AllPosts from "./containers/AllPosts";
 import Nav from "./containers/Nav";
 import MyPosts from "./containers/MyPosts";
+import PostItem from './components/PostItem'
 
 class App extends Component {
   state = {
@@ -99,6 +100,7 @@ class App extends Component {
           />
           <Route path="/allposts" exact component={AllPosts} />
           <Route path="/myposts" exact component={MyPosts} />
+          <Route path="/posts" exact component={PostItem} />
         </Switch>
       </div>
     );

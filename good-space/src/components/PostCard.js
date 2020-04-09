@@ -1,32 +1,14 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+// import { useHistory } from 'react-router-dom';
 import PostItem from "./PostItem";
 
 class PostCard extends React.Component {
   state = {
     toggleDetails: false,
     // likes: 0
+    users: []
   };
-
-  // increaseLikes = () => {
-  //   this.setState(prevState => ({ likes: prevState.likes + 1 }));
-  // };
-
-  // addLikesToDB = (likes) => {
-  //   fetch("http://localhost:3000/likes", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       accept: "application/json"
-  //     },
-  //     body: JSON.stringify(this.state)
-  //   })
-  //     .then(res => res.json())
-  //     .then(likes => {
-  //       this.setState({ likes: [likes, ...this.state.likes] });
-  //     });
-  // };
-
 
   clickHandler = event => {
     event.persist();
@@ -37,14 +19,30 @@ class PostCard extends React.Component {
     });
   };
 
+  componentDidMount() {
+    fetch("http://localhost:3000/users")
+    .then(response => response.json())
+    .then(users => this.setState({ users }));
+}
+
+  sendEmail = () => {
+let userId = this.state.users.find(user => {
+  return user.id === this.props.user_id
+})
+    window.location.assign(`mailto:${userId.email}`)
+  }
+
   render() {
-console.log(this.state.likes, 'how many likes?')
+    console.log(this.props.user, "what are the props here");
     return (
       <div className="post-card">
-        <h5>{this.props.title}</h5><br/>
+        <h5>{this.props.title}</h5>
+        <br />
         <h6>Category:</h6> <p>{this.props.category}</p>
-        <h6>Location:</h6><p>{this.props.location}</p>
-        <h6>Date Posted:</h6><p>{new Date(this.props.date).toLocaleDateString()}</p>
+        <h6>Location:</h6>
+        <p>{this.props.location}</p>
+        <h6>Date Posted:</h6>
+        <p>{new Date(this.props.date).toLocaleDateString()}</p>
         {/* <Button
           onClick={this.increaseLikes}
           increaseLikesToDB={this.addLikesToDB}
@@ -52,9 +50,12 @@ console.log(this.state.likes, 'how many likes?')
           Likes: {this.state.likes}{" "}
         </Button> */}
         {this.state.toggleDetails ? <PostItem {...this.props} /> : null}
+        {/* <Button onClick={() => history.push("/posts")}> */}
         <Button onClick={this.clickHandler}>
           {this.state.toggleDetails ? "Hide Details" : "Show Details"}
-        </Button>
+        </Button><br/>
+        {this.state.toggleDetails ? 
+        <Button onClick={this.sendEmail}>Reply</Button> : null}
         <hr />
         <br />
         <br />
@@ -64,3 +65,22 @@ console.log(this.state.likes, 'how many likes?')
 }
 
 export default PostCard;
+
+// increaseLikes = () => {
+//   this.setState(prevState => ({ likes: prevState.likes + 1 }));
+// };
+
+// addLikesToDB = (likes) => {
+//   fetch("http://localhost:3000/likes", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       accept: "application/json"
+//     },
+//     body: JSON.stringify(this.state)
+//   })
+//     .then(res => res.json())
+//     .then(likes => {
+//       this.setState({ likes: [likes, ...this.state.likes] });
+//     });
+// };

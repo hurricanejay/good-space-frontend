@@ -13,6 +13,8 @@ class AllPosts extends React.Component {
       .then(posts => this.setState({ posts }));
   }
 
+  
+
   render() {
     return (
       <div className="all-posts">

@@ -9,8 +9,9 @@ class Signup extends React.Component {
     password: ""
   };
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   };
 
   handleSubmit = e => {
@@ -37,18 +38,19 @@ class Signup extends React.Component {
 
     this.setState({ name: "", password: "" });
   };
+
   render() {
     return (
       <div className="signup">
         <h3>Create An Account</h3>
         <form onSubmit={this.handleSubmit} id="form">
           <FormGroup controlId="email" bsSize="large">
-            <label>Name</label>
+            <label>Username</label>
             <FormControl
               autoFocus
               type="text"
               name="name"
-              placeholder="Name"
+              placeholder="Username"
               value={this.state.name}
               onChange={this.handleChange}
             />

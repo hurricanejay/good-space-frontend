@@ -69,13 +69,13 @@ class MyPosts extends React.Component {
         <h3>My Posts</h3>
         <br />
         <div>
-          <div>
-            {this.renderPosts()}
-          </div>
+          <div>{this.renderPosts()}</div>
         </div>
         <br />
 
-        <Button onClick={this.showForm}>Create A New Post</Button><br/><br/>
+        <Button onClick={this.showForm}>Create A New Post</Button>
+        <br />
+        <br />
         {this.state.toggleForm ? (
           <PostForm addNewPost={this.addNewPost} />
         ) : null}

@@ -37,15 +37,13 @@ handleSubmit = (e) => {
   }
 
   render() {
-    // console.log(this.state.username, 'username?')
-    // console.log(this.props.setUser, 'props?')
+ 
     return (
-  
       <div className="login">
       <h3>Login</h3>
       <form onSubmit={this.handleSubmit} id='form'>
           <FormGroup controlId="email" bssize="large">
-              <label>Name</label>
+              <label>Username</label>
               <FormControl
                   autoFocus
                   type="text"
@@ -55,7 +53,7 @@ handleSubmit = (e) => {
                   onChange={this.handleChange}
               />
           </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
+          <FormGroup controlId="password" bssize="large">
               <label>Password</label>
               <FormControl
                   type="password"
@@ -71,6 +69,8 @@ handleSubmit = (e) => {
       </form>
   </div>
     )
+ 
+
   }
 };
 

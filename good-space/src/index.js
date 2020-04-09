@@ -9,14 +9,6 @@ import {
   Switch, Route
 } from "react-router-dom";
 
-import Home from "./components/Home";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import AllPosts from "./containers/AllPosts";
-import Nav from "./containers/Nav";
-import MyPosts from "./containers/MyPosts";
-
-
 ReactDOM.render(
   <Router>
  <Route path="/" component={App} />
