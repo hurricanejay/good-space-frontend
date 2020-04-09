@@ -1,8 +1,8 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-// import DatePicker from "react-datepicker";
+import DatePicker from "react-datepicker";
 
-// import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 class PostForm extends React.Component {
   state = {
@@ -11,8 +11,8 @@ class PostForm extends React.Component {
     description: "",
     tag: "",
     category: "",
-    date: "",
-    // startDate: new Date(),
+    // date: "",
+    date: new Date(),
     user_id: localStorage.user_id
   };
 
@@ -23,7 +23,7 @@ class PostForm extends React.Component {
 
   handleChange = date => {
     this.setState({
-      startDate: date
+      date: date
     });
   };
 
@@ -57,20 +57,20 @@ class PostForm extends React.Component {
           />
           <br />
           <label htmlFor="date">Date</label>
-          <input
+          {/* <input
             type="text"
             name="date"
             value={this.state.date}
             className="form-control"
             onChange={this.onChange}
-          />
+          /> */}
           <br />
-          {/* <DatePicker
-            selected={this.state.startDate}
+          <DatePicker
+            selected={this.state.date}
             onChange={this.handleChange}
             className="form-control"
-            name="start-date"
-          /> */}
+            name="date"
+          />
           <br />
           <label htmlFor="location">Zip Code</label>
           <input
