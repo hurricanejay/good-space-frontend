@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import PostForm from "../components/PostForm";
-import PostItem from "../components/PostItem";
+import PostCard from "../components/PostCard";
 
 const postsAPI = "http://localhost:3000/posts";
 
@@ -36,9 +36,42 @@ class MyPosts extends React.Component {
     })
       .then(res => res.json())
       .then(posts => {
-        this.setState({ posts: [...this.state.posts, posts] });
+        this.setState({ posts: [posts, ...this.state.posts] });
       });
   };
+
+  //  handleSubmit = () => {
+  //   let data = {
+  //     title: props.title,
+  //     category: props.category,
+  //     date: props.date,
+  //     location: props.location,
+  //     tag: props.tag,
+  //     description: description
+  //   };
+
+  //   fetch(`http://localhost:3000/posts/${props.id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       accept: "application/json"
+  //     },
+  //     body: JSON.stringify(data)
+  //   })
+  //     .then(res => res.json())
+  //     .then(() => {
+  //       setDescription(description);
+  //       setEditing(false);
+  //     });
+  // };
+
+  //  deletePost = () => {
+  //   fetch(`http://localhost:3000/posts/${props.id}`, {
+  //     method: "DELETE"
+  //   });
+  //   props.afterDelete(props);
+  // };
+
 
   afterDelete = obj => {
     const postsCopy = [...this.state.posts];
@@ -51,11 +84,12 @@ class MyPosts extends React.Component {
       this.state.posts.length &&
       this.state.posts.map(post => (
         <div>
-          <PostItem
+          <PostCard
             {...post}
             test="x"
             key={post.id}
             afterDelete={this.afterDelete}
+            history={this.props.history}
           />
         </div>
       ))
@@ -63,7 +97,6 @@ class MyPosts extends React.Component {
   };
 
   render() {
-    console.log(this.state.posts, "posts?");
     return (
       <div className="my-posts">
         <h3>My Posts</h3>

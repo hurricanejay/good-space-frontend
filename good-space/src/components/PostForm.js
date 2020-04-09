@@ -57,13 +57,6 @@ class PostForm extends React.Component {
           />
           <br />
           <label htmlFor="date">Date</label>
-          {/* <input
-            type="text"
-            name="date"
-            value={this.state.date}
-            className="form-control"
-            onChange={this.onChange}
-          /> */}
           <br />
           <DatePicker
             selected={this.state.date}

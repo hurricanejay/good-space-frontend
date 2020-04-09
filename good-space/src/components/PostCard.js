@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import PostItem from "./PostItem";
-
+import { useHistory } from "react-router-dom";
 
 class PostCard extends React.Component {
   state = {
@@ -19,18 +19,9 @@ class PostCard extends React.Component {
     });
   };
 
-  componentDidMount() {
-    fetch("http://localhost:3000/users")
-    .then(response => response.json())
-    .then(users => this.setState({ users }));
-}
-
-  sendEmail = () => {
-const userId = this.state.users.find(user => {
-  return user.id === this.props.user_id
-})
-    window.location.assign(`mailto:${userId.email}`)
-  }
+  handleClick = () => {
+    this.props.history.push(`/postitem/${this.props.id}`);
+  };
 
   render() {
     return (
@@ -42,14 +33,8 @@ const userId = this.state.users.find(user => {
         <p>{this.props.location}</p>
         <h6>Date Posted:</h6>
         <p>{new Date(this.props.date).toLocaleDateString()}</p>
-  
-        {this.state.toggleDetails ? <PostItem {...this.props} /> : null}
-        {/* <Button onClick={this.handleClick}> */}
-        <Button onClick={this.clickHandler}>
-          {this.state.toggleDetails ? "Hide Details" : "Show Details"}
-        </Button><br/>
-        {this.state.toggleDetails ? 
-        <Button onClick={this.sendEmail}>Reply</Button> : null}
+        <Button onClick={this.handleClick}>Show Details</Button>
+        <br />
         <hr />
         <br />
         <br />
@@ -78,9 +63,11 @@ export default PostCard;
 //       this.setState({ likes: [likes, ...this.state.likes] });
 //     });
 // };
-      {/* <Button
+{
+  /* <Button
           onClick={this.increaseLikes}
           increaseLikesToDB={this.addLikesToDB}
         >
           Likes: {this.state.likes}{" "}
-        </Button> */}
+        </Button> */
+}

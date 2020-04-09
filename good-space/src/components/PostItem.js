@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 
 const PostItem = props => {
+  const [users, setUsers] = useState({});
   const [editing, setEditing] = useState(false);
   const [description, setDescription] = useState(props.description);
+  const [post, setPost] = useState({});
+  const location = useLocation().pathname.split("/")[2];
+
+  // const [title, setTitle] = useState(props.title);
+
+  const clickBack = () => {
+    props.history.push("/allposts");
+  };
 
   const editingHandler = () => {
     if (editing) {
@@ -17,63 +27,58 @@ const PostItem = props => {
     setDescription(e.target.value);
   };
 
-  const handleSubmit = () => {
-    let data = {
-      title: props.title,
-      category: props.category,
-      date: props.date,
-      location: props.location,
-      tag: props.tag,
-      description: description
-    };
+  useEffect(() => {
+    fetch(`http://localhost:3000/posts/${location}`)
+      .then(response => response.json())
+      .then(post => setPost(post));
+  }, []);
 
-    fetch(`http://localhost:3000/posts/${props.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(() => {
-        setDescription(description);
-        setEditing(false);
-      });
-  };
+  useEffect(() => {
+    fetch("http://localhost:3000/users")
+      .then(response => response.json())
+      .then(users => setUsers(users));
+  }, []);
 
-  const deletePost = () => {
-    fetch(`http://localhost:3000/posts/${props.id}`, {
-      method: "DELETE"
+  const sendEmail = () => {
+    const userId = users.find(user => {
+      // console.log(localStorage.user_id, 'user?')
+      return user.id === parseInt(localStorage.user_id);
     });
-    props.afterDelete(props);
+    window.location.assign(`mailto:${userId.email}`);
+    console.log(userId)
   };
 
+  // console.log(users, "users in postitem");
+
+  
   return (
     <div className="post-item">
-      <h6>{props.title}</h6>
-      <h6>Category: {props.category}</h6>
-      <h6>Tag: {props.tag}</h6>
-      <h6>Location: {props.location}</h6>
-      <h6>Date: {new Date(props.date).toLocaleDateString()}</h6>
-      <p>
-        {editing ? (
-          <textarea
-            rows={5}
-            value={description}
-            onChange={changeInput}
-          ></textarea>
-        ) : (
-          description
-        )}
-      </p>
-      <br />
-      {editing && <Button onClick={handleSubmit}>Save</Button>}
-      {props.test && <Button onClick={editingHandler}>Edit</Button>}
-      {props.test && <Button onClick={deletePost}>Delete</Button>}
+      <div>
+        <h6>{post.title}</h6>
 
-      {/* <p>Leave A Comment</p><textarea type="text"/><br/><br/> */}
-      {/* <Button>Submit</Button><br/><br/> */}
+        {/* {editing? (<h6 value={title} onchange={changeInput}></h6>) : (title)} */}
+        <h6>Category: {post.category}</h6>
+        <h6>Tag: {post.tag}</h6>
+        <h6>Location: {post.location}</h6>
+        <h6>Date: {new Date(post.date).toLocaleDateString()}</h6>
+        <p>
+          {editing ? (
+            <textarea
+              rows={5}
+              value={description}
+              onChange={changeInput}
+            ></textarea>
+          ) : (
+            post.description
+          )}
+        </p>
+        <Button onClick={sendEmail}>Reply</Button>
+        <br />
+        <br />
+        <Button onClick={clickBack}>Back</Button>
+        <br />
+
+      </div>
     </div>
   );
 };

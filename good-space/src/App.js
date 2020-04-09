@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import AllPosts from "./containers/AllPosts";
 import Nav from "./containers/Nav";
 import MyPosts from "./containers/MyPosts";
-import PostItem from './components/PostItem'
+import PostItem from "./components/PostItem";
 
 class App extends Component {
   state = {
@@ -39,21 +36,22 @@ class App extends Component {
     }
   }
 
-  showHomePage = () => {
-    this.setState(prevState => {
-      return {
-        onHomePage: !prevState.onHomePage
-      }
-    })
-  }
+  // showHomePage = () => {
+  //   this.setState(prevState => {
+  //     return {
+  //       onHomePage: !prevState.onHomePage
+  //     }
+  //   })
+  // }
 
   navDisplay = () => {
     this.setState(prevState => {
       return {
         showNav: !prevState.showNav
-      }
-    })
-  }
+      };
+    });
+  };
+
   setUser = user => {
     this.setState(
       {
@@ -87,15 +85,14 @@ class App extends Component {
       <div className="App">
         {/* {this.state.onHomePage ? null : */}
         <Nav
-        navDisplay={this.navDisplay}
+          navDisplay={this.navDisplay}
           setUser={this.setUser}
           logout={this.logout}
           currentUser={this.state.currentUser}
-        /> 
-       {/* } */}
-   
+        />
+        {/* } */}
+
         <Switch>
-          
           <Route path="/home" exact component={Home} />
 
           <Route
@@ -106,12 +103,11 @@ class App extends Component {
           <Route
             path="/signup"
             exact
-            component={() =>
-            <Signup isAuthed={true} setUser={this.setUser}/> }
+            component={() => <Signup isAuthed={true} setUser={this.setUser} />}
           />
           <Route path="/allposts" exact component={AllPosts} />
           <Route path="/myposts" exact component={MyPosts} />
-          <Route path="/posts" exact component={PostItem} />
+          <Route path="/postitem/:id" exact component={PostItem} />
         </Switch>
       </div>
     );
