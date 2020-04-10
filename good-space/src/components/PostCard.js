@@ -1,6 +1,4 @@
 import { Button } from "react-bootstrap";
-import PostItem from "./PostItem";
-import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 const PostCard = props => {

@@ -7,8 +7,6 @@ const PostItem = props => {
   const [post, setPost] = useState({});
   const location = useLocation().pathname.split("/")[2];
 
-  // const [title, setTitle] = useState(props.title);
-
   const clickBack = () => {
     props.history.push("/allposts");
   };
@@ -27,13 +25,10 @@ const PostItem = props => {
 
   const sendEmail = () => {
     const userId = users.find(user => {
-      // console.log(localStorage.user_id, 'user?')
       return user.id === parseInt(post.user_id);
     });
     window.location.assign(`mailto:${userId.email}`);
   };
-  console.log(props, "what are the props?");
-  // console.log(users, "users in postitem");
 
   return (
     <div className="post-item">
@@ -46,7 +41,7 @@ const PostItem = props => {
         <h6>Location: {post.location}</h6>
         <h6>Date: {new Date(post.date).toLocaleDateString()}</h6>
         <p>{post.description}</p>
-        
+
         <Button onClick={sendEmail}>Reply</Button>
         <br />
         <br />

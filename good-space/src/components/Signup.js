@@ -5,7 +5,7 @@ const API = "http://localhost:3000/users";
 
 class Signup extends React.Component {
   state = {
-    name: "",
+    username: "",
     password: ""
   };
 
@@ -16,7 +16,7 @@ class Signup extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.name && this.state.password) {
+    if (this.state.username && this.state.password) {
       fetch(API, {
         method: "POST",
         headers: {
@@ -36,7 +36,7 @@ class Signup extends React.Component {
       alert("Please choose a username and password");
     }
 
-    this.setState({ name: "", password: "" });
+    this.setState({ username: "", password: "" });
   };
 
   render() {
@@ -49,9 +49,9 @@ class Signup extends React.Component {
             <FormControl
               autoFocus
               type="text"
-              name="name"
+              name="username"
               placeholder="Username"
-              value={this.state.name}
+              value={this.state.username}
               onChange={this.handleChange}
             />
           </FormGroup>
