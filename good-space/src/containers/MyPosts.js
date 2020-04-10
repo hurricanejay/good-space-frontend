@@ -41,13 +41,6 @@ class MyPosts extends React.Component {
       });
   };
 
-  //  deletePost = () => {
-  //   fetch(`http://localhost:3000/posts/${this.props.id}`, {
-  //     method: "DELETE"
-  //   });
-  //   this.props.afterDelete(this.props);
-  // };
-
 
   afterDelete = obj => {
     const postsCopy = [...this.state.posts];

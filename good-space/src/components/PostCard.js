@@ -50,8 +50,8 @@ const PostCard = props => {
     })
       .then(res => res.json())
       .then(body => {
-        setDescription(body.description)
-         setEditing(false);
+        setDescription(body.description);
+        setEditing(false);
       });
   };
 
@@ -67,12 +67,9 @@ const PostCard = props => {
       {props.showDetails ? (
         <Button onClick={handleClick}>Show Details</Button>
       ) : null}
-      {props.showEdit ? <Button onClick={editingHandler}>Edit</Button> : null}
-      {props.showSave ? <Button onClick={handleSubmit}>Save</Button> : null}
-      {props.showDelete ? <Button onClick={deletePost}>Delete</Button> : null}
       <br />
-      <hr />
-      <p>
+      {props.showEdit ? (
+        <p>
           {editing ? (
             <textarea
               rows={5}
@@ -83,6 +80,11 @@ const PostCard = props => {
             description
           )}
         </p>
+      ) : null}
+      {props.showEdit ? <Button onClick={editingHandler}>Edit</Button> : null}
+      {props.showSave ? <Button onClick={handleSubmit}>Save</Button> : null}
+      {props.showDelete ? <Button onClick={deletePost}>Delete</Button> : null}
+      <hr />
       <br />
       <br />
     </div>

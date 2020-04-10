@@ -13,8 +13,7 @@ import PostItem from "./components/PostItem";
 class App extends Component {
   state = {
     currentUser: null,
-    // showNav: true,
-    onHomePage: true
+    showNav: false,
   };
 
   componentDidMount() {
@@ -35,14 +34,6 @@ class App extends Component {
         });
     }
   }
-
-  // showHomePage = () => {
-  //   this.setState(prevState => {
-  //     return {
-  //       onHomePage: !prevState.onHomePage
-  //     }
-  //   })
-  // }
 
   navDisplay = () => {
     this.setState(prevState => {
@@ -83,17 +74,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* {this.state.onHomePage ? null : */}
+        {/* {this.state.showNav ?  */}
         <Nav
           navDisplay={this.navDisplay}
           setUser={this.setUser}
           logout={this.logout}
           currentUser={this.state.currentUser}
         />
-        {/* } */}
+    {/* : null } */}
+
 
         <Switch>
-          <Route path="/home" exact component={Home} />
+          <Route path="/home" exact component={Home} showNav={false} />
 
           <Route
             path="/login"
