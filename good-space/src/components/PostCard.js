@@ -1,73 +1,92 @@
-import React from "react";
 import { Button } from "react-bootstrap";
 import PostItem from "./PostItem";
 import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
-class PostCard extends React.Component {
-  state = {
-    toggleDetails: false,
-    // likes: 0
-    users: []
+const PostCard = props => {
+  const [editing, setEditing] = useState(false);
+  const [description, setDescription] = useState(props.description);
+
+  const handleClick = () => {
+    props.history.push(`/postitem/${props.id}`);
   };
 
-  clickHandler = event => {
-    event.persist();
-    this.setState(prevState => {
-      return {
-        toggleDetails: !prevState.toggleDetails
-      };
+  const deletePost = () => {
+    fetch(`http://localhost:3000/posts/${props.id}`, {
+      method: "DELETE"
     });
+    props.afterDelete(props);
   };
 
-  handleClick = () => {
-    this.props.history.push(`/postitem/${this.props.id}`);
+  const editingHandler = () => {
+    if (editing) {
+      setEditing(false);
+    } else {
+      setEditing(true);
+    }
   };
 
-  render() {
-    return (
-      <div className="post-card">
-        <h5>{this.props.title}</h5>
-        <br />
-        <h6>Category:</h6> <p>{this.props.category}</p>
-        <h6>Location:</h6>
-        <p>{this.props.location}</p>
-        <h6>Date Posted:</h6>
-        <p>{new Date(this.props.date).toLocaleDateString()}</p>
-        <Button onClick={this.handleClick}>Show Details</Button>
-        <br />
-        <hr />
-        <br />
-        <br />
-      </div>
-    );
-  }
-}
+  const changeInput = e => {
+    setDescription(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    let data = {
+      title: props.title,
+      category: props.category,
+      date: props.date,
+      location: props.location,
+      tag: props.tag,
+      description: description
+    };
+
+    fetch(`http://localhost:3000/posts/${props.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(body => {
+        setDescription(body.description)
+         setEditing(false);
+      });
+  };
+
+  return (
+    <div className="post-card">
+      <h5>{props.title}</h5>
+      <br />
+      <h6>Category:</h6> <p>{props.category}</p>
+      <h6>Location:</h6>
+      <p>{props.location}</p>
+      <h6>Date Posted:</h6>
+      <p>{new Date(props.date).toLocaleDateString()}</p>
+      {props.showDetails ? (
+        <Button onClick={handleClick}>Show Details</Button>
+      ) : null}
+      {props.showEdit ? <Button onClick={editingHandler}>Edit</Button> : null}
+      {props.showSave ? <Button onClick={handleSubmit}>Save</Button> : null}
+      {props.showDelete ? <Button onClick={deletePost}>Delete</Button> : null}
+      <br />
+      <hr />
+      <p>
+          {editing ? (
+            <textarea
+              rows={5}
+              value={description}
+              onChange={changeInput}
+            ></textarea>
+          ) : (
+            description
+          )}
+        </p>
+      <br />
+      <br />
+    </div>
+  );
+};
 
 export default PostCard;
-
-// increaseLikes = () => {
-//   this.setState(prevState => ({ likes: prevState.likes + 1 }));
-// };
-
-// addLikesToDB = (likes) => {
-//   fetch("http://localhost:3000/likes", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       accept: "application/json"
-//     },
-//     body: JSON.stringify(this.state)
-//   })
-//     .then(res => res.json())
-//     .then(likes => {
-//       this.setState({ likes: [likes, ...this.state.likes] });
-//     });
-// };
-{
-  /* <Button
-          onClick={this.increaseLikes}
-          increaseLikesToDB={this.addLikesToDB}
-        >
-          Likes: {this.state.likes}{" "}
-        </Button> */
-}

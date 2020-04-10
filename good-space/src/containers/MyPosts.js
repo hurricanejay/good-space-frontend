@@ -8,8 +8,9 @@ const postsAPI = "http://localhost:3000/posts";
 class MyPosts extends React.Component {
   state = {
     posts: [],
-    toggleForm: false
+    toggleForm: false,
   };
+
 
   showForm = () => {
     this.setState(prevState => {
@@ -40,36 +41,11 @@ class MyPosts extends React.Component {
       });
   };
 
-  //  handleSubmit = () => {
-  //   let data = {
-  //     title: props.title,
-  //     category: props.category,
-  //     date: props.date,
-  //     location: props.location,
-  //     tag: props.tag,
-  //     description: description
-  //   };
-
-  //   fetch(`http://localhost:3000/posts/${props.id}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       accept: "application/json"
-  //     },
-  //     body: JSON.stringify(data)
-  //   })
-  //     .then(res => res.json())
-  //     .then(() => {
-  //       setDescription(description);
-  //       setEditing(false);
-  //     });
-  // };
-
   //  deletePost = () => {
-  //   fetch(`http://localhost:3000/posts/${props.id}`, {
+  //   fetch(`http://localhost:3000/posts/${this.props.id}`, {
   //     method: "DELETE"
   //   });
-  //   props.afterDelete(props);
+  //   this.props.afterDelete(this.props);
   // };
 
 
@@ -90,7 +66,11 @@ class MyPosts extends React.Component {
             key={post.id}
             afterDelete={this.afterDelete}
             history={this.props.history}
-          />
+            showDetails={false}
+            showEdit={true}
+            showSave={true}
+            showDelete={true}
+            />
         </div>
       ))
     );
@@ -105,7 +85,6 @@ class MyPosts extends React.Component {
           <div>{this.renderPosts()}</div>
         </div>
         <br />
-
         <Button onClick={this.showForm}>Create A New Post</Button>
         <br />
         <br />

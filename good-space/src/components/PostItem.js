@@ -4,8 +4,6 @@ import { useLocation } from "react-router-dom";
 
 const PostItem = props => {
   const [users, setUsers] = useState({});
-  const [editing, setEditing] = useState(false);
-  const [description, setDescription] = useState(props.description);
   const [post, setPost] = useState({});
   const location = useLocation().pathname.split("/")[2];
 
@@ -13,18 +11,6 @@ const PostItem = props => {
 
   const clickBack = () => {
     props.history.push("/allposts");
-  };
-
-  const editingHandler = () => {
-    if (editing) {
-      setEditing(false);
-    } else {
-      setEditing(true);
-    }
-  };
-
-  const changeInput = e => {
-    setDescription(e.target.value);
   };
 
   useEffect(() => {
@@ -42,42 +28,30 @@ const PostItem = props => {
   const sendEmail = () => {
     const userId = users.find(user => {
       // console.log(localStorage.user_id, 'user?')
-      return user.id === parseInt(localStorage.user_id);
+      return user.id === parseInt(post.user_id);
     });
     window.location.assign(`mailto:${userId.email}`);
-    console.log(userId)
   };
-
+  console.log(props, "what are the props?");
   // console.log(users, "users in postitem");
 
-  
   return (
     <div className="post-item">
       <div>
+        <h3>Post Details</h3>
+        <br />
         <h6>{post.title}</h6>
-
-        {/* {editing? (<h6 value={title} onchange={changeInput}></h6>) : (title)} */}
         <h6>Category: {post.category}</h6>
         <h6>Tag: {post.tag}</h6>
         <h6>Location: {post.location}</h6>
         <h6>Date: {new Date(post.date).toLocaleDateString()}</h6>
-        <p>
-          {editing ? (
-            <textarea
-              rows={5}
-              value={description}
-              onChange={changeInput}
-            ></textarea>
-          ) : (
-            post.description
-          )}
-        </p>
+        <p>{post.description}</p>
+        
         <Button onClick={sendEmail}>Reply</Button>
         <br />
         <br />
         <Button onClick={clickBack}>Back</Button>
         <br />
-
       </div>
     </div>
   );
