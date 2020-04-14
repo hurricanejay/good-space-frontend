@@ -13,10 +13,10 @@ class SimpleMap extends Component {
 
     static defaultProps = {
       center: {
-        lat: 40.75,
-        lng: -74.00
+        lat: 40,
+        lng: 74
       },
-      zoom: 13
+      zoom: 15
     };
 
     
@@ -34,20 +34,21 @@ class SimpleMap extends Component {
 }
    
   render() {
-  
+    console.log(this.state, 'latnlong')
     return (
 
       <div style={{ height: '70vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:"AIzaSyDSAux7_3LvqlxXll6VChWmPuS8aMYl3IA" }}
           defaultCenter={this.props.center}
+          center={this.state}
           defaultZoom={this.props.zoom}
         > 
         {this.state.lat && this.state.lng ?
           <AnyReactComponent
             lat={parseFloat(this.state.lat)}
             lng={parseFloat(this.state.lng)}
-            text="Here!"
+            text="I'M HERE"
           /> : null }
         </GoogleMapReact>
       </div>
