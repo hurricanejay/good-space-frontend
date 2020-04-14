@@ -9,11 +9,12 @@
 }
 
 .nav-links {
-  width: 50%;
+  width: 80%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   list-style: none;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .post-form {
@@ -21,28 +22,40 @@
   margin: auto;
 }
 
+.all-posts {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
 .post-item {
   width: 500px;
   margin: auto;
-  background: rgb(186, 226, 186);
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .post-card {
-  /* display: flex; */
-  background: rgb(192, 234, 238);
-  width: 50%;
+
+  width: 40%;
   margin: auto;
-  /* justify-content: center; */
-  /* justify-self: center; */
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1 {
+  font-family: 'Amatic SC', cursive;
+}
+
+h3 {
+  font-family: 'Amatic SC', cursive;
 }
 
 .login {
   width: 500px;
   margin: auto;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 .signup {
   width: 500px;
   margin: auto;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 .my-posts {
   text-align: center;
@@ -51,7 +64,9 @@
 .all-posts {
   text-align: center;
 }
+
 .home {
   width: 600px;
   margin: auto;
+  font-family: 'Roboto Condensed', sans-serif;
 }

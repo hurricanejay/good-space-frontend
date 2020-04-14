@@ -13,7 +13,7 @@ import PostItem from "./components/PostItem";
 class App extends Component {
   state = {
     currentUser: null,
-    showNav: false,
+    showNav: false
   };
 
   componentDidMount() {
@@ -74,18 +74,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* {this.state.showNav ?  */}
+
+        {/* {this.props.showNav ?  */}
         <Nav
-          navDisplay={this.navDisplay}
+          // navDisplay={this.navDisplay}
           setUser={this.setUser}
           logout={this.logout}
           currentUser={this.state.currentUser}
-        />
-    {/* : null } */}
-
+        /> 
+        {/* // : null } */}
 
         <Switch>
-          <Route path="/home" exact component={Home} showNav={false} />
+       
+          <Route path="/home" exact component={Home}/>
 
           <Route
             path="/login"

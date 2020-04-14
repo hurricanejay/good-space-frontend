@@ -70,15 +70,17 @@ class MyPosts extends React.Component {
   };
 
   render() {
+console.log(this.addNewPost, 'new post fuc')
     return (
       <div className="my-posts">
+        <br/>
         <h3>My Posts</h3>
         <br />
         <div>
           <div>{this.renderPosts()}</div>
         </div>
         <br />
-        <Button onClick={this.showForm}>Create A New Post</Button>
+        <Button size="sm" onClick={this.showForm}>Create A New Post</Button>
         <br />
         <br />
         {this.state.toggleForm ? (

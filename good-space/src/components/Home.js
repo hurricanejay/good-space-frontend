@@ -10,20 +10,19 @@ const Home = () => {
       <br />
       <div>
         <p>
-          A community platform that allows you to connect with others for help,
-          especially during a time of emergency.
+          A community platform that allows you to connect with others during a time of emergency.
         </p>
       </div>
       <br />
       <Link to="/login" exact>
-        <Button>Login</Button>
+        <Button  size="sm"  >Login</Button>
       </Link>
       <Link to="/signup" exact>
-        <Button>Signup</Button>
+        <Button  size="sm" >Signup</Button>
       </Link>
       <br /> <br />
       <Link to="/allposts" exact>
-        <Button>See All Posts</Button>
+        <Button size="sm" >See All Posts</Button>
       </Link>
       <br />
     </div>

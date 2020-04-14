@@ -17,6 +17,7 @@ class AllPosts extends React.Component {
   render() {
     return (
       <div className="all-posts">
+          <br/>
         <h3>Latest Posts</h3>
         <br />
         {this.state.posts.map(post => (

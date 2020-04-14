@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 
 const PostCard = props => {
@@ -54,17 +54,25 @@ const PostCard = props => {
   };
 
   return (
+  
     <div className="post-card">
-      <h5>{props.title}</h5>
-      <br />
-      <h6>Category:</h6> <p>{props.category}</p>
-      <h6>Location:</h6>
-      <p>{props.location}</p>
-      <h6>Date Posted:</h6>
-      <p>{new Date(props.date).toLocaleDateString()}</p>
-      {props.showDetails ? (
-        <Button onClick={handleClick}>Show Details</Button>
-      ) : null}
+    
+      <Card border="warning" style={{ width: '33rem'}}>
+        <Card.Body>
+          <Card.Title>{props.title}</Card.Title>
+          <br />
+          <Card.Text>Category: {props.category}</Card.Text>
+          <Card.Text>Location: {props.location}</Card.Text>
+          <Card.Text>
+            Date Posted:  
+             {new Date(props.date).toLocaleDateString()}
+          </Card.Text>
+          {props.showDetails ? (
+            <Button size="sm" onClick={handleClick}>
+              Show Details
+            </Button>
+          ) : null}
+      
       <br />
       {props.showEdit ? (
         <p>
@@ -82,9 +90,10 @@ const PostCard = props => {
       {props.showEdit ? <Button onClick={editingHandler}>Edit</Button> : null}
       {props.showSave ? <Button onClick={handleSubmit}>Save</Button> : null}
       {props.showDelete ? <Button onClick={deletePost}>Delete</Button> : null}
-      <hr />
       <br />
       <br />
+      </Card.Body>
+      </Card>
     </div>
   );
 };

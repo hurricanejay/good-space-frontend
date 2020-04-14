@@ -6,7 +6,8 @@ const API = "http://localhost:3000/users";
 class Signup extends React.Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    email: ""
   };
 
   handleChange = event => {
@@ -40,11 +41,23 @@ class Signup extends React.Component {
   };
 
   render() {
+    console.log(this.state.password, "getting pw?");
     return (
       <div className="signup">
         <h3>Create An Account</h3>
         <form onSubmit={this.handleSubmit} id="form">
           <FormGroup controlId="email" bsSize="large">
+            <label>Email</label>
+            <FormControl
+              autoFocus
+              type="text"
+              name="email"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId="username" bsSize="large">
             <label>Username</label>
             <FormControl
               autoFocus
@@ -55,6 +68,7 @@ class Signup extends React.Component {
               onChange={this.handleChange}
             />
           </FormGroup>
+
           <FormGroup controlId="password" bsSize="large">
             <label>Password</label>
             <FormControl

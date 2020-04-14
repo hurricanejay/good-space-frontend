@@ -11,7 +11,6 @@ class PostForm extends React.Component {
     description: "",
     tag: "",
     category: "",
-    // date: "",
     date: new Date(),
     user_id: localStorage.user_id
   };
@@ -37,13 +36,13 @@ class PostForm extends React.Component {
       location: "",
       description: "",
       tag: "",
-      category: ""
+      category: "",
+      user_id: localStorage.user_id
     });
   };
 
   render() {
-    //   console.log(this.props.addNewPost, 'add new post func?')
-    // console.log(this.state.description, 'desc??')
+
     return (
       <div>
         <form className="post-form" onSubmit={this.onSubmit}>
@@ -65,7 +64,7 @@ class PostForm extends React.Component {
             name="date"
           />
           <br />
-          <label htmlFor="location">Zip Code</label>
+          <label htmlFor="location">Address</label>
           <input
             type="text"
             name="location"
@@ -103,7 +102,7 @@ class PostForm extends React.Component {
           />
           
           <br />
-          <Button type="submit">Submit</Button>
+          <Button variant="dark" size="sm" type="submit">Submit</Button>
         </form>
         <br />
         <br />
