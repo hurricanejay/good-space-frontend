@@ -10,6 +10,8 @@ import Nav from "./containers/Nav";
 import MyPosts from "./containers/MyPosts";
 import PostItem from "./components/PostItem";
 
+const API_KEY = process.env.REACT_APP_API_KEY
+
 class App extends Component {
   state = {
     currentUser: null,
@@ -72,6 +74,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(API_KEY, 'api key')
     return (
       <div className="App">
 

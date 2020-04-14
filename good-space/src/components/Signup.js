@@ -17,7 +17,7 @@ class Signup extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.username && this.state.password) {
+    // if (this.state.username && this.state.password) {
       fetch(API, {
         method: "POST",
         headers: {
@@ -33,9 +33,9 @@ class Signup extends React.Component {
             this.props.setUser(response);
           }
         });
-    } else {
-      alert("Please choose a username and password");
-    }
+    // } else {
+    //   alert("Please choose a username and password");
+    // }
 
     this.setState({ username: "", password: "" });
   };

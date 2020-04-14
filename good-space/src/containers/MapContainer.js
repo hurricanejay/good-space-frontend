@@ -4,6 +4,8 @@ import GoogleMapReact from "google-map-react";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
+const API_KEY = process.env.REACT_APP_API_KEY
+
 class SimpleMap extends Component {
 
   state = { 
@@ -22,7 +24,7 @@ class SimpleMap extends Component {
     
  componentDidMount() {
   fetch(
-    `https://maps.googleapis.com/maps/api/geocode/json?address=${this.props.postLocation}&sensor=true&key=AIzaSyDSAux7_3LvqlxXll6VChWmPuS8aMYl3IA`
+    `https://maps.googleapis.com/maps/api/geocode/json?address=${this.props.postLocation}&sensor=true&key=${API_KEY}`
       )
     .then(resp => resp.json())
     .then( data => {
@@ -34,12 +36,12 @@ class SimpleMap extends Component {
 }
    
   render() {
-    console.log(this.state, 'latnlong')
+    console.log(API_KEY, 'api key')
     return (
 
       <div style={{ height: '70vh', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key:"AIzaSyDSAux7_3LvqlxXll6VChWmPuS8aMYl3IA" }}
+          bootstrapURLKeys={{ key: API_KEY }}
           defaultCenter={this.props.center}
           center={this.state}
           defaultZoom={this.props.zoom}

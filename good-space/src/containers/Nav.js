@@ -17,17 +17,7 @@ const Nav = (props) => {
         <NavLink style={navStyle}  to="/home">
             <li>Home</li>
           </NavLink>
-          {(props.currentUser) ? null :
-          <NavLink style={navStyle}  to="/login">
-            <li>Log In</li>
-          </NavLink>}
-          {(props.currentUser) ? null : 
-          <NavLink style={navStyle} to="/signup">
-            <li>Sign Up</li>
-          </NavLink>}
-          {props.currentUser ? 
-          <Link style={navStyle} 
-          onClick={props.logout} >Logout</Link> : null}
+
           <NavLink style={navStyle} to="/allposts">
             <li>All Posts</li>
           </NavLink>
@@ -35,6 +25,24 @@ const Nav = (props) => {
           <NavLink style={navStyle} to="/myposts">
             <li>My Posts</li>
           </NavLink>}
+
+          {(props.currentUser) ? null :
+          <NavLink style={navStyle}  to="/login">
+            <li>Log In</li>
+          </NavLink>}
+
+
+          {props.currentUser ? 
+          <Link style={navStyle} 
+          onClick={props.logout} >Logout</Link> : null}
+          
+          {(props.currentUser) ? null : 
+          <NavLink style={navStyle} to="/signup">
+            <li>Sign Up</li>
+          </NavLink>}
+
+
+         
         </ul>
       </div>
     </nav>
