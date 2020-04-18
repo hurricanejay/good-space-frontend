@@ -42,10 +42,9 @@ class PostForm extends React.Component {
   };
 
   render() {
-
     return (
       <div>
-        <form className="post-form" onSubmit={this.onSubmit}>
+        <form className="post-form" border="warning" onSubmit={this.onSubmit}>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -74,7 +73,7 @@ class PostForm extends React.Component {
           />
           <br />
           <label htmlFor="category">Category</label>
-          <input
+          <input 
             type="text"
             name="category"
             value={this.state.category}
@@ -82,30 +81,27 @@ class PostForm extends React.Component {
             onChange={this.onChange}
           />
           <br />
-          <label htmlFor="Tag">Tag</label>
+          {/* <label htmlFor="Tag">Tag</label>
           <input
             type="text"
             name="tag"
             className="form-control"
             value={this.state.tag}
             onChange={this.onChange}
-          />
+          /> */}
           <br />
           <label htmlFor="description">Description</label>
-          <textarea
+          <textarea 
           type="text"
             name="description"
             value={this.state.description}
             className="form-control"
-            rows={7}
+            rows={10}
             onChange={this.onChange}
           />
-          
-          <br />
-          <Button variant="dark" size="sm" type="submit">Submit</Button>
+          <br/>
+          <Button className="btns" variant="outline-dark" size="sm" type="submit">Submit</Button>
         </form>
-        <br />
-        <br />
       </div>
     );
   }

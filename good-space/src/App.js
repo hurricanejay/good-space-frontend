@@ -10,7 +10,6 @@ import Nav from "./containers/Nav";
 import MyPosts from "./containers/MyPosts";
 import PostItem from "./components/PostItem";
 
-const API_KEY = process.env.REACT_APP_API_KEY
 
 class App extends Component {
   state = {
@@ -74,18 +73,14 @@ class App extends Component {
   };
 
   render() {
-    console.log(API_KEY, 'api key')
     return (
       <div className="App">
 
-        {/* {this.props.showNav ?  */}
         <Nav
-          // navDisplay={this.navDisplay}
           setUser={this.setUser}
           logout={this.logout}
           currentUser={this.state.currentUser}
         /> 
-        {/* // : null } */}
 
         <Switch>
        

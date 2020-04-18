@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <div className='map-text'>{text}</div>;
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -23,9 +23,7 @@ class SimpleMap extends Component {
 
     
  componentDidMount() {
-  fetch(
-    `https://maps.googleapis.com/maps/api/geocode/json?address=${this.props.postLocation}&sensor=true&key=${API_KEY}`
-      )
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.props.postLocation}&sensor=true&key=${API_KEY}`)
     .then(resp => resp.json())
     .then( data => {
       this.setState({
@@ -36,7 +34,6 @@ class SimpleMap extends Component {
 }
    
   render() {
-    console.log(API_KEY, 'api key')
     return (
 
       <div style={{ height: '70vh', width: '100%' }}>
@@ -50,7 +47,7 @@ class SimpleMap extends Component {
           <AnyReactComponent
             lat={parseFloat(this.state.lat)}
             lng={parseFloat(this.state.lng)}
-            text="I'M HERE"
+            text="📍I'M HERE"
           /> : null }
         </GoogleMapReact>
       </div>

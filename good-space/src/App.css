@@ -5,7 +5,7 @@
   min-height: 10vh;
   background: rgb(255, 255, 126);
   color: black;
-
+  padding: 15px 5px 5px 40px;
 }
 
 .nav-links {
@@ -14,48 +14,53 @@
   justify-content: space-around;
   align-items: center;
   list-style: none;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Gotu', sans-serif;
 }
 
 .post-form {
   width: 500px;
   margin: auto;
+  font-family: 'Gotu', sans-serif;
+  padding:10px 5px 15px 20px;
 }
 
 .all-posts {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Gotu', sans-serif;
 }
 
 .post-item {
+  display: flex;
   width: 500px;
+  justify-content: space-around;
   margin: auto;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Gotu', sans-serif;
+  padding:10px 5px 15px 20px;
 }
 
 .post-card {
-
   width: 40%;
   margin: auto;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Gotu', sans-serif;
+  padding:5px 10px 15px 10px;
 }
 
 h1 {
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Gotu', sans-serif;
 }
 
 h3 {
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Gotu', sans-serif;
 }
 
 .login {
   width: 500px;
   margin: auto;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Gotu', sans-serif;
 }
 .signup {
   width: 500px;
   margin: auto;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Gotu', sans-serif;
 }
 .my-posts {
   text-align: center;
@@ -65,8 +70,43 @@ h3 {
   text-align: center;
 }
 
+.bg-img {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  top: 50px;
+  left: 0;
+}
+
+.my-posts {
+  font-family: 'Gotu', sans-serif;
+}
+
 .home {
   width: 600px;
   margin: auto;
-  font-family: 'Roboto Condensed', sans-serif;
+  margin-top: 190px;
+  text-align: center;
+  font-family: 'Gotu', sans-serif;
+  background-color: rgba(255, 255, 255, 0.769);
+  padding:30px 5px 5px 10px;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-around;
+  padding:10px 5px 15px 10px;
+}
+
+.map {
+  padding:15px 5px 15px 10px;
+}
+
+.map-text {
+  font-size: 16px;
+  color: red;
+}
+
+.form-text {
+  width: 300px;
 }

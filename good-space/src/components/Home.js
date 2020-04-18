@@ -1,30 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import bg from './bg.png'
+
 
 const Home = () => {
   return (
     <div className="home">
-      <h1>Welcome To The Good Space</h1>
-      <br />
-      <br />
+      <h1 className='title'>Welcome To The Good Space</h1>
       <div>
-        <p>
-          A community platform that allows you to connect with others during a time of emergency.
+        <img src= {`${bg}` } className='bg-img'></img>
+        <p className='subtitle'>
+          We are a community platform that allows you to connect with others in a time of emergency. Check below for the latest updates.  
         </p>
       </div>
-      <br />
-      <Link to="/login" exact>
+      {/* <Link to="/login" exact>
         <Button  size="sm"  >Login</Button>
       </Link>
       <Link to="/signup" exact>
         <Button  size="sm" >Signup</Button>
       </Link>
-      <br /> <br />
+      <br /> <br /> */}
+      <div className="btns">
       <Link to="/allposts" exact>
-        <Button size="sm" >See All Posts</Button>
+        <Button variant="success" size="sm" >See All Community Posts</Button>
       </Link>
-      <br />
+      </div>
     </div>
   );
 };

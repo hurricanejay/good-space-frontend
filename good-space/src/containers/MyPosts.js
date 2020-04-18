@@ -80,7 +80,7 @@ console.log(this.addNewPost, 'new post fuc')
           <div>{this.renderPosts()}</div>
         </div>
         <br />
-        <Button size="sm" onClick={this.showForm}>Create A New Post</Button>
+        <Button className="btns" variant="outline-dark" size="sm" onClick={this.showForm}>Create A New Post</Button>
         <br />
         <br />
         {this.state.toggleForm ? (

@@ -28,7 +28,7 @@ const PostItem = props => {
     const userId = users.find(user => {
       return user.id === parseInt(post.user_id);
     });
-    window.location.assign(`mailto:${userId.email}`);
+    window.open(`mailto:${userId.email}?&subject=Responding To Your Good Space Post: ${post.title}`);
   };
   return (
     <div className="post-item">
@@ -40,21 +40,21 @@ const PostItem = props => {
         <Card.Title>{post.title}</Card.Title>
         <br />
         <Card.Text>Category: {post.category}</Card.Text>
-        <Card.Text>Tag: {post.tag}</Card.Text>
+        {/* <Card.Text>Tag: {post.tag}</Card.Text> */}
         <Card.Text>Location: {post.location}</Card.Text>
         <Card.Text>Date: {new Date(post.date).toLocaleDateString()}</Card.Text>
         <Card.Text>{post.description}</Card.Text>
-        <br />
-        <br />
-        <Button size="sm" onClick={sendEmail}>Reply</Button>
-        <br />
-        <br />
-        <Button size="sm" onClick={clickBack}>Back</Button>
-        <br />
+        <div className="btns">
+        <Button size="sm" variant="success" onClick={sendEmail} >Reply</Button>
+        <Button size="sm" variant="outline-dark" onClick={clickBack}>Back</Button>
+        </div>
         </Card.Body>
         </Card>
+        <div className='map'>
         {post.location ? 
         <MapContainer postLocation={post.location}/> : null }
+
+        </div>
         
       </div>
     </div>

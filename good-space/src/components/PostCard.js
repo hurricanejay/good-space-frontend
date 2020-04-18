@@ -61,24 +61,23 @@ const PostCard = props => {
         <Card.Body>
           <Card.Title>{props.title}</Card.Title>
           <br />
-          <Card.Text>Category: {props.category}</Card.Text>
+          {/* <Card.Text>Category: {props.category}</Card.Text> */}
           <Card.Text>Location: {props.location}</Card.Text>
           <Card.Text>
-            Date Posted:  
-             {new Date(props.date).toLocaleDateString()}
+            Date:  
+               {new Date (props.date).toLocaleDateString()}
           </Card.Text>
           {props.showDetails ? (
-            <Button size="sm" onClick={handleClick}>
+            <Button size="sm" variant="outline-dark" onClick={handleClick}>
               Show Details
             </Button>
           ) : null}
-      
-      <br />
       {props.showEdit ? (
         <p>
           {editing ? (
             <textarea
-              rows={5}
+            className="form-control"
+              rows={6}
               value={description}
               onChange={changeInput}
             ></textarea>
@@ -87,11 +86,11 @@ const PostCard = props => {
           )}
         </p>
       ) : null}
-      {props.showEdit ? <Button onClick={editingHandler}>Edit</Button> : null}
-      {props.showSave ? <Button onClick={handleSubmit}>Save</Button> : null}
-      {props.showDelete ? <Button onClick={deletePost}>Delete</Button> : null}
-      <br />
-      <br />
+      <div className="btns">
+      {props.showEdit ? <Button size="sm" variant="outline-dark" onClick={editingHandler}>Edit</Button> : null}
+      {props.showSave ? <Button size="sm" variant="outline-dark" onClick={handleSubmit}>Save</Button> : null}
+      {props.showDelete ? <Button size="sm" variant="outline-dark" onClick={deletePost}>Delete</Button> : null}
+      </div>
       </Card.Body>
       </Card>
     </div>
