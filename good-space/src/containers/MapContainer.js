@@ -1,10 +1,10 @@
 
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
+import API_KEY from '../secretkey'
 
 const AnyReactComponent = ({ text }) => <div className='map-text'>{text}</div>;
 
-const API_KEY = process.env.REACT_APP_API_KEY
 
 class SimpleMap extends Component {
 
