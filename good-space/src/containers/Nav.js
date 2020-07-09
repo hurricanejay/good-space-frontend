@@ -14,7 +14,7 @@ const Nav = (props) => {
       <div className="nav">
       <h3>The Good Space</h3>
         <ul className="nav-links">
-        <NavLink style={navStyle}  to="/home">
+        <NavLink style={navStyle}  to="/">
             <li>Home</li>
           </NavLink>
 
