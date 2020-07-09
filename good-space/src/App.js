@@ -63,7 +63,7 @@ class App extends Component {
       },
       () => {
         localStorage.removeItem("user_id");
-        this.props.history.push("/home");
+        this.props.history.push("/");
       }
     );
   };
@@ -84,7 +84,7 @@ class App extends Component {
 
         <Switch>
        
-          <Route path="/home" exact component={Home}/>
+          <Route path="/" exact component={Home}/>
 
           <Route
             path="/login"
